@@ -20,8 +20,11 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
               let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
         
         window = UIWindow(windowScene: windowScene)
-        
-        let mapVC = MapViewController()
+        let networkManager = NetworkManager()
+        let mapRP = LocationRepository(locationNetwok: LocationNetwork(manager: networkManager), aqiNetwork: AQINetwork(manager: networkManager))
+        let mapUC = MapUsecase(repository: mapRP)
+        let mapVM = MapViewModel(usecase: mapUC)
+        let mapVC = MapViewController(viewModel: mapVM)
         let rootVC = UINavigationController(rootViewController: mapVC)
         window?.backgroundColor = .white
         window?.rootViewController = rootVC

@@ -26,6 +26,7 @@
 		F8AB348D2C33EC7500BC16C9 /* MapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8AB348C2C33EC7500BC16C9 /* MapViewModel.swift */; };
 		F8AB34902C33F31D00BC16C9 /* Extension + Bundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8AB348E2C33F31D00BC16C9 /* Extension + Bundle.swift */; };
 		F8AB34922C33F32900BC16C9 /* Secret.plist in Resources */ = {isa = PBXBuildFile; fileRef = F8AB34912C33F32900BC16C9 /* Secret.plist */; };
+		F8AB349A2C34162A00BC16C9 /* Extension + Double.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8AB34992C34162A00BC16C9 /* Extension + Double.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -52,6 +53,7 @@
 		F8AB348C2C33EC7500BC16C9 /* MapViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewModel.swift; sourceTree = "<group>"; };
 		F8AB348E2C33F31D00BC16C9 /* Extension + Bundle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Extension + Bundle.swift"; sourceTree = "<group>"; };
 		F8AB34912C33F32900BC16C9 /* Secret.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Secret.plist; sourceTree = "<group>"; };
+		F8AB34992C34162A00BC16C9 /* Extension + Double.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension + Double.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -203,6 +205,7 @@
 			isa = PBXGroup;
 			children = (
 				F8AB348E2C33F31D00BC16C9 /* Extension + Bundle.swift */,
+				F8AB34992C34162A00BC16C9 /* Extension + Double.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -353,6 +356,7 @@
 				F8AB33F12C328E5200BC16C9 /* LocationFetchResult.swift in Sources */,
 				F8AB348D2C33EC7500BC16C9 /* MapViewModel.swift in Sources */,
 				F8AB33F72C3293D300BC16C9 /* Location.swift in Sources */,
+				F8AB349A2C34162A00BC16C9 /* Extension + Double.swift in Sources */,
 				F8AB33DE2C328D2300BC16C9 /* SceneDelegate.swift in Sources */,
 				F8AB340D2C32B13600BC16C9 /* RepositoryProtocol.swift in Sources */,
 			);
