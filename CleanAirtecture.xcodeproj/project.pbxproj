@@ -7,15 +7,30 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		552B452F41284A774B535C13 /* Pods_CleanAirtecture.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C3F30CDCDDAA7CB260986A41 /* Pods_CleanAirtecture.framework */; };
 		F8AB33DC2C328D2300BC16C9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8AB33DB2C328D2300BC16C9 /* AppDelegate.swift */; };
 		F8AB33DE2C328D2300BC16C9 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8AB33DD2C328D2300BC16C9 /* SceneDelegate.swift */; };
 		F8AB33E02C328D2300BC16C9 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8AB33DF2C328D2300BC16C9 /* ViewController.swift */; };
 		F8AB33E32C328D2300BC16C9 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = F8AB33E22C328D2300BC16C9 /* Base */; };
 		F8AB33E52C328D2400BC16C9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F8AB33E42C328D2400BC16C9 /* Assets.xcassets */; };
 		F8AB33E82C328D2400BC16C9 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = F8AB33E72C328D2400BC16C9 /* Base */; };
+		F8AB33F12C328E5200BC16C9 /* LocationFetchResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8AB33F02C328E5200BC16C9 /* LocationFetchResult.swift */; };
+		F8AB33F52C3292BC00BC16C9 /* MapUsecase.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8AB33F42C3292BC00BC16C9 /* MapUsecase.swift */; };
+		F8AB33F72C3293D300BC16C9 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8AB33F62C3293D300BC16C9 /* Location.swift */; };
+		F8AB33F92C32944C00BC16C9 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8AB33F82C32944C00BC16C9 /* NetworkError.swift */; };
+		F8AB33FB2C32946D00BC16C9 /* CoreDataError.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8AB33FA2C32946D00BC16C9 /* CoreDataError.swift */; };
+		F8AB33FF2C32965600BC16C9 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8AB33FE2C32965600BC16C9 /* NetworkManager.swift */; };
+		F8AB34012C3296D200BC16C9 /* LocationNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8AB34002C3296D200BC16C9 /* LocationNetwork.swift */; };
+		F8AB34052C3297F800BC16C9 /* AQINetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8AB34042C3297F800BC16C9 /* AQINetwork.swift */; };
+		F8AB34072C329E9300BC16C9 /* AQIFetchResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8AB34062C329E9300BC16C9 /* AQIFetchResult.swift */; };
+		F8AB340A2C32A5CF00BC16C9 /* Repository.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8AB34092C32A5CF00BC16C9 /* Repository.swift */; };
+		F8AB340D2C32B13600BC16C9 /* RepositoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8AB340C2C32B13600BC16C9 /* RepositoryProtocol.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		61CE86D80F30BCB665D0F00D /* Pods-CleanAirtecture.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CleanAirtecture.debug.xcconfig"; path = "Target Support Files/Pods-CleanAirtecture/Pods-CleanAirtecture.debug.xcconfig"; sourceTree = "<group>"; };
+		755168D5E8BA3F3826AB45BF /* Pods-CleanAirtecture.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CleanAirtecture.release.xcconfig"; path = "Target Support Files/Pods-CleanAirtecture/Pods-CleanAirtecture.release.xcconfig"; sourceTree = "<group>"; };
+		C3F30CDCDDAA7CB260986A41 /* Pods_CleanAirtecture.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CleanAirtecture.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F8AB33D82C328D2300BC16C9 /* CleanAirtecture.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CleanAirtecture.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F8AB33DB2C328D2300BC16C9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F8AB33DD2C328D2300BC16C9 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -24,6 +39,17 @@
 		F8AB33E42C328D2400BC16C9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F8AB33E72C328D2400BC16C9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F8AB33E92C328D2400BC16C9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F8AB33F02C328E5200BC16C9 /* LocationFetchResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationFetchResult.swift; sourceTree = "<group>"; };
+		F8AB33F42C3292BC00BC16C9 /* MapUsecase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapUsecase.swift; sourceTree = "<group>"; };
+		F8AB33F62C3293D300BC16C9 /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
+		F8AB33F82C32944C00BC16C9 /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
+		F8AB33FA2C32946D00BC16C9 /* CoreDataError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataError.swift; sourceTree = "<group>"; };
+		F8AB33FE2C32965600BC16C9 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		F8AB34002C3296D200BC16C9 /* LocationNetwork.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationNetwork.swift; sourceTree = "<group>"; };
+		F8AB34042C3297F800BC16C9 /* AQINetwork.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AQINetwork.swift; sourceTree = "<group>"; };
+		F8AB34062C329E9300BC16C9 /* AQIFetchResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AQIFetchResult.swift; sourceTree = "<group>"; };
+		F8AB34092C32A5CF00BC16C9 /* Repository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Repository.swift; sourceTree = "<group>"; };
+		F8AB340C2C32B13600BC16C9 /* RepositoryProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryProtocol.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,17 +57,37 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				552B452F41284A774B535C13 /* Pods_CleanAirtecture.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5B8E2782915F84A38D643D15 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				61CE86D80F30BCB665D0F00D /* Pods-CleanAirtecture.debug.xcconfig */,
+				755168D5E8BA3F3826AB45BF /* Pods-CleanAirtecture.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		BE48AC9E6E95308BCA3A1C45 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				C3F30CDCDDAA7CB260986A41 /* Pods_CleanAirtecture.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		F8AB33CF2C328D2300BC16C9 = {
 			isa = PBXGroup;
 			children = (
 				F8AB33DA2C328D2300BC16C9 /* CleanAirtecture */,
 				F8AB33D92C328D2300BC16C9 /* Products */,
+				5B8E2782915F84A38D643D15 /* Pods */,
+				BE48AC9E6E95308BCA3A1C45 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -56,7 +102,9 @@
 		F8AB33DA2C328D2300BC16C9 /* CleanAirtecture */ = {
 			isa = PBXGroup;
 			children = (
-				F8AB33EF2C328D2C00BC16C9 /* Entity */,
+				F8AB348A2C33EC3D00BC16C9 /* Presentation */,
+				F8AB33FC2C32949600BC16C9 /* Data */,
+				F8AB33F22C32929800BC16C9 /* Domain */,
 				F8AB33DB2C328D2300BC16C9 /* AppDelegate.swift */,
 				F8AB33DD2C328D2300BC16C9 /* SceneDelegate.swift */,
 				F8AB33DF2C328D2300BC16C9 /* ViewController.swift */,
@@ -71,8 +119,81 @@
 		F8AB33EF2C328D2C00BC16C9 /* Entity */ = {
 			isa = PBXGroup;
 			children = (
+				F8AB33F02C328E5200BC16C9 /* LocationFetchResult.swift */,
+				F8AB34062C329E9300BC16C9 /* AQIFetchResult.swift */,
+				F8AB33F62C3293D300BC16C9 /* Location.swift */,
+				F8AB33F82C32944C00BC16C9 /* NetworkError.swift */,
+				F8AB33FA2C32946D00BC16C9 /* CoreDataError.swift */,
 			);
 			path = Entity;
+			sourceTree = "<group>";
+		};
+		F8AB33F22C32929800BC16C9 /* Domain */ = {
+			isa = PBXGroup;
+			children = (
+				F8AB340B2C32B12800BC16C9 /* RepositoryProtocol */,
+				F8AB33F32C32929E00BC16C9 /* Usecase */,
+				F8AB33EF2C328D2C00BC16C9 /* Entity */,
+			);
+			path = Domain;
+			sourceTree = "<group>";
+		};
+		F8AB33F32C32929E00BC16C9 /* Usecase */ = {
+			isa = PBXGroup;
+			children = (
+				F8AB33F42C3292BC00BC16C9 /* MapUsecase.swift */,
+			);
+			path = Usecase;
+			sourceTree = "<group>";
+		};
+		F8AB33FC2C32949600BC16C9 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				F8AB34082C32A5B900BC16C9 /* Repository */,
+				F8AB33FD2C32949B00BC16C9 /* Network */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		F8AB33FD2C32949B00BC16C9 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				F8AB33FE2C32965600BC16C9 /* NetworkManager.swift */,
+				F8AB34002C3296D200BC16C9 /* LocationNetwork.swift */,
+				F8AB34042C3297F800BC16C9 /* AQINetwork.swift */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		F8AB34082C32A5B900BC16C9 /* Repository */ = {
+			isa = PBXGroup;
+			children = (
+				F8AB34092C32A5CF00BC16C9 /* Repository.swift */,
+			);
+			path = Repository;
+			sourceTree = "<group>";
+		};
+		F8AB340B2C32B12800BC16C9 /* RepositoryProtocol */ = {
+			isa = PBXGroup;
+			children = (
+				F8AB340C2C32B13600BC16C9 /* RepositoryProtocol.swift */,
+			);
+			path = RepositoryProtocol;
+			sourceTree = "<group>";
+		};
+		F8AB348A2C33EC3D00BC16C9 /* Presentation */ = {
+			isa = PBXGroup;
+			children = (
+				F8AB348B2C33EC4500BC16C9 /* Map */,
+			);
+			path = Presentation;
+			sourceTree = "<group>";
+		};
+		F8AB348B2C33EC4500BC16C9 /* Map */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Map;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -82,9 +203,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = F8AB33EC2C328D2400BC16C9 /* Build configuration list for PBXNativeTarget "CleanAirtecture" */;
 			buildPhases = (
+				8EEF21549743C5FEE8513A98 /* [CP] Check Pods Manifest.lock */,
 				F8AB33D42C328D2300BC16C9 /* Sources */,
 				F8AB33D52C328D2300BC16C9 /* Frameworks */,
 				F8AB33D62C328D2300BC16C9 /* Resources */,
+				7F7989CD4B51FAAB5D96C50B /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -141,14 +264,67 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		7F7989CD4B51FAAB5D96C50B /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-CleanAirtecture/Pods-CleanAirtecture-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-CleanAirtecture/Pods-CleanAirtecture-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-CleanAirtecture/Pods-CleanAirtecture-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		8EEF21549743C5FEE8513A98 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-CleanAirtecture-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		F8AB33D42C328D2300BC16C9 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F8AB33FF2C32965600BC16C9 /* NetworkManager.swift in Sources */,
+				F8AB34012C3296D200BC16C9 /* LocationNetwork.swift in Sources */,
 				F8AB33E02C328D2300BC16C9 /* ViewController.swift in Sources */,
+				F8AB340A2C32A5CF00BC16C9 /* Repository.swift in Sources */,
+				F8AB34052C3297F800BC16C9 /* AQINetwork.swift in Sources */,
+				F8AB33F92C32944C00BC16C9 /* NetworkError.swift in Sources */,
+				F8AB33F52C3292BC00BC16C9 /* MapUsecase.swift in Sources */,
+				F8AB33FB2C32946D00BC16C9 /* CoreDataError.swift in Sources */,
+				F8AB34072C329E9300BC16C9 /* AQIFetchResult.swift in Sources */,
 				F8AB33DC2C328D2300BC16C9 /* AppDelegate.swift in Sources */,
+				F8AB33F12C328E5200BC16C9 /* LocationFetchResult.swift in Sources */,
+				F8AB33F72C3293D300BC16C9 /* Location.swift in Sources */,
 				F8AB33DE2C328D2300BC16C9 /* SceneDelegate.swift in Sources */,
+				F8AB340D2C32B13600BC16C9 /* RepositoryProtocol.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -295,11 +471,13 @@
 		};
 		F8AB33ED2C328D2400BC16C9 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 61CE86D80F30BCB665D0F00D /* Pods-CleanAirtecture.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = CleanAirtecture/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -322,11 +500,13 @@
 		};
 		F8AB33EE2C328D2400BC16C9 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 755168D5E8BA3F3826AB45BF /* Pods-CleanAirtecture.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = CleanAirtecture/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
