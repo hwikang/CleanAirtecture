@@ -10,10 +10,8 @@
 		552B452F41284A774B535C13 /* Pods_CleanAirtecture.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C3F30CDCDDAA7CB260986A41 /* Pods_CleanAirtecture.framework */; };
 		F8AB33DC2C328D2300BC16C9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8AB33DB2C328D2300BC16C9 /* AppDelegate.swift */; };
 		F8AB33DE2C328D2300BC16C9 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8AB33DD2C328D2300BC16C9 /* SceneDelegate.swift */; };
-		F8AB33E02C328D2300BC16C9 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8AB33DF2C328D2300BC16C9 /* ViewController.swift */; };
-		F8AB33E32C328D2300BC16C9 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = F8AB33E22C328D2300BC16C9 /* Base */; };
+		F8AB33E02C328D2300BC16C9 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8AB33DF2C328D2300BC16C9 /* MapViewController.swift */; };
 		F8AB33E52C328D2400BC16C9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F8AB33E42C328D2400BC16C9 /* Assets.xcassets */; };
-		F8AB33E82C328D2400BC16C9 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = F8AB33E72C328D2400BC16C9 /* Base */; };
 		F8AB33F12C328E5200BC16C9 /* LocationFetchResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8AB33F02C328E5200BC16C9 /* LocationFetchResult.swift */; };
 		F8AB33F52C3292BC00BC16C9 /* MapUsecase.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8AB33F42C3292BC00BC16C9 /* MapUsecase.swift */; };
 		F8AB33F72C3293D300BC16C9 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8AB33F62C3293D300BC16C9 /* Location.swift */; };
@@ -25,6 +23,9 @@
 		F8AB34072C329E9300BC16C9 /* AQIFetchResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8AB34062C329E9300BC16C9 /* AQIFetchResult.swift */; };
 		F8AB340A2C32A5CF00BC16C9 /* Repository.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8AB34092C32A5CF00BC16C9 /* Repository.swift */; };
 		F8AB340D2C32B13600BC16C9 /* RepositoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8AB340C2C32B13600BC16C9 /* RepositoryProtocol.swift */; };
+		F8AB348D2C33EC7500BC16C9 /* MapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8AB348C2C33EC7500BC16C9 /* MapViewModel.swift */; };
+		F8AB34902C33F31D00BC16C9 /* Extension + Bundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8AB348E2C33F31D00BC16C9 /* Extension + Bundle.swift */; };
+		F8AB34922C33F32900BC16C9 /* Secret.plist in Resources */ = {isa = PBXBuildFile; fileRef = F8AB34912C33F32900BC16C9 /* Secret.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,10 +35,8 @@
 		F8AB33D82C328D2300BC16C9 /* CleanAirtecture.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CleanAirtecture.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F8AB33DB2C328D2300BC16C9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F8AB33DD2C328D2300BC16C9 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		F8AB33DF2C328D2300BC16C9 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		F8AB33E22C328D2300BC16C9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		F8AB33DF2C328D2300BC16C9 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		F8AB33E42C328D2400BC16C9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		F8AB33E72C328D2400BC16C9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F8AB33E92C328D2400BC16C9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F8AB33F02C328E5200BC16C9 /* LocationFetchResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationFetchResult.swift; sourceTree = "<group>"; };
 		F8AB33F42C3292BC00BC16C9 /* MapUsecase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapUsecase.swift; sourceTree = "<group>"; };
@@ -50,6 +49,9 @@
 		F8AB34062C329E9300BC16C9 /* AQIFetchResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AQIFetchResult.swift; sourceTree = "<group>"; };
 		F8AB34092C32A5CF00BC16C9 /* Repository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Repository.swift; sourceTree = "<group>"; };
 		F8AB340C2C32B13600BC16C9 /* RepositoryProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryProtocol.swift; sourceTree = "<group>"; };
+		F8AB348C2C33EC7500BC16C9 /* MapViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewModel.swift; sourceTree = "<group>"; };
+		F8AB348E2C33F31D00BC16C9 /* Extension + Bundle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Extension + Bundle.swift"; sourceTree = "<group>"; };
+		F8AB34912C33F32900BC16C9 /* Secret.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Secret.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,15 +104,14 @@
 		F8AB33DA2C328D2300BC16C9 /* CleanAirtecture */ = {
 			isa = PBXGroup;
 			children = (
+				F8AB348F2C33F31D00BC16C9 /* Extension */,
 				F8AB348A2C33EC3D00BC16C9 /* Presentation */,
 				F8AB33FC2C32949600BC16C9 /* Data */,
 				F8AB33F22C32929800BC16C9 /* Domain */,
 				F8AB33DB2C328D2300BC16C9 /* AppDelegate.swift */,
 				F8AB33DD2C328D2300BC16C9 /* SceneDelegate.swift */,
-				F8AB33DF2C328D2300BC16C9 /* ViewController.swift */,
-				F8AB33E12C328D2300BC16C9 /* Main.storyboard */,
 				F8AB33E42C328D2400BC16C9 /* Assets.xcassets */,
-				F8AB33E62C328D2400BC16C9 /* LaunchScreen.storyboard */,
+				F8AB34912C33F32900BC16C9 /* Secret.plist */,
 				F8AB33E92C328D2400BC16C9 /* Info.plist */,
 			);
 			path = CleanAirtecture;
@@ -192,8 +193,18 @@
 		F8AB348B2C33EC4500BC16C9 /* Map */ = {
 			isa = PBXGroup;
 			children = (
+				F8AB348C2C33EC7500BC16C9 /* MapViewModel.swift */,
+				F8AB33DF2C328D2300BC16C9 /* MapViewController.swift */,
 			);
 			path = Map;
+			sourceTree = "<group>";
+		};
+		F8AB348F2C33F31D00BC16C9 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				F8AB348E2C33F31D00BC16C9 /* Extension + Bundle.swift */,
+			);
+			path = Extension;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -208,6 +219,7 @@
 				F8AB33D52C328D2300BC16C9 /* Frameworks */,
 				F8AB33D62C328D2300BC16C9 /* Resources */,
 				7F7989CD4B51FAAB5D96C50B /* [CP] Embed Pods Frameworks */,
+				B63EC8D736483EBB63368A03 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -256,9 +268,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F8AB34922C33F32900BC16C9 /* Secret.plist in Resources */,
 				F8AB33E52C328D2400BC16C9 /* Assets.xcassets in Resources */,
-				F8AB33E82C328D2400BC16C9 /* Base in Resources */,
-				F8AB33E32C328D2300BC16C9 /* Base in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -304,6 +315,23 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		B63EC8D736483EBB63368A03 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-CleanAirtecture/Pods-CleanAirtecture-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-CleanAirtecture/Pods-CleanAirtecture-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-CleanAirtecture/Pods-CleanAirtecture-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -313,15 +341,17 @@
 			files = (
 				F8AB33FF2C32965600BC16C9 /* NetworkManager.swift in Sources */,
 				F8AB34012C3296D200BC16C9 /* LocationNetwork.swift in Sources */,
-				F8AB33E02C328D2300BC16C9 /* ViewController.swift in Sources */,
+				F8AB33E02C328D2300BC16C9 /* MapViewController.swift in Sources */,
 				F8AB340A2C32A5CF00BC16C9 /* Repository.swift in Sources */,
 				F8AB34052C3297F800BC16C9 /* AQINetwork.swift in Sources */,
+				F8AB34902C33F31D00BC16C9 /* Extension + Bundle.swift in Sources */,
 				F8AB33F92C32944C00BC16C9 /* NetworkError.swift in Sources */,
 				F8AB33F52C3292BC00BC16C9 /* MapUsecase.swift in Sources */,
 				F8AB33FB2C32946D00BC16C9 /* CoreDataError.swift in Sources */,
 				F8AB34072C329E9300BC16C9 /* AQIFetchResult.swift in Sources */,
 				F8AB33DC2C328D2300BC16C9 /* AppDelegate.swift in Sources */,
 				F8AB33F12C328E5200BC16C9 /* LocationFetchResult.swift in Sources */,
+				F8AB348D2C33EC7500BC16C9 /* MapViewModel.swift in Sources */,
 				F8AB33F72C3293D300BC16C9 /* Location.swift in Sources */,
 				F8AB33DE2C328D2300BC16C9 /* SceneDelegate.swift in Sources */,
 				F8AB340D2C32B13600BC16C9 /* RepositoryProtocol.swift in Sources */,
@@ -329,25 +359,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXVariantGroup section */
-		F8AB33E12C328D2300BC16C9 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				F8AB33E22C328D2300BC16C9 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		F8AB33E62C328D2400BC16C9 /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				F8AB33E72C328D2400BC16C9 /* Base */,
-			);
-			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		F8AB33EA2C328D2400BC16C9 /* Debug */ = {
@@ -477,12 +488,12 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = L3B9L4FDBB;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = CleanAirtecture/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -490,7 +501,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = inc.paytalab.CleanAirtecture;
+				PRODUCT_BUNDLE_IDENTIFIER = inc.simonkang.CleanAirtecture;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -506,12 +517,12 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = L3B9L4FDBB;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = CleanAirtecture/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -519,7 +530,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = inc.paytalab.CleanAirtecture;
+				PRODUCT_BUNDLE_IDENTIFIER = inc.simonkang.CleanAirtecture;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
