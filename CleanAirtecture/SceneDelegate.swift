@@ -19,9 +19,11 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let windowScene = (scene as? UIWindowScene),
               let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
         
+       
         window = UIWindow(windowScene: windowScene)
         let networkManager = NetworkManager()
-        let mapRP = LocationRepository(locationNetwok: LocationNetwork(manager: networkManager), aqiNetwork: AQINetwork(manager: networkManager))
+        let coreData = LocationCoreData(viewContext: appDelegate.persistentContainer.viewContext)
+        let mapRP = LocationRepository(locationNetwok: LocationNetwork(manager: networkManager), aqiNetwork: AQINetwork(manager: networkManager), coreData: coreData)
         let mapUC = MapUsecase(repository: mapRP)
         let mapVM = MapViewModel(usecase: mapUC)
         let mapVC = MapViewController(viewModel: mapVM)

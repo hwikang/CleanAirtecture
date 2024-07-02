@@ -27,6 +27,8 @@
 		F8AB34902C33F31D00BC16C9 /* Extension + Bundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8AB348E2C33F31D00BC16C9 /* Extension + Bundle.swift */; };
 		F8AB34922C33F32900BC16C9 /* Secret.plist in Resources */ = {isa = PBXBuildFile; fileRef = F8AB34912C33F32900BC16C9 /* Secret.plist */; };
 		F8AB349A2C34162A00BC16C9 /* Extension + Double.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8AB34992C34162A00BC16C9 /* Extension + Double.swift */; };
+		F8AB349D2C34272800BC16C9 /* CleanAirtecture.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F8AB349B2C34272800BC16C9 /* CleanAirtecture.xcdatamodeld */; };
+		F8AB34A02C3427EA00BC16C9 /* LocationCoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8AB349F2C3427EA00BC16C9 /* LocationCoreData.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -54,6 +56,8 @@
 		F8AB348E2C33F31D00BC16C9 /* Extension + Bundle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Extension + Bundle.swift"; sourceTree = "<group>"; };
 		F8AB34912C33F32900BC16C9 /* Secret.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Secret.plist; sourceTree = "<group>"; };
 		F8AB34992C34162A00BC16C9 /* Extension + Double.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension + Double.swift"; sourceTree = "<group>"; };
+		F8AB349C2C34272800BC16C9 /* CleanAirtecture.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CleanAirtecture.xcdatamodel; sourceTree = "<group>"; };
+		F8AB349F2C3427EA00BC16C9 /* LocationCoreData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationCoreData.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -88,6 +92,7 @@
 		F8AB33CF2C328D2300BC16C9 = {
 			isa = PBXGroup;
 			children = (
+				F8AB349B2C34272800BC16C9 /* CleanAirtecture.xcdatamodeld */,
 				F8AB33DA2C328D2300BC16C9 /* CleanAirtecture */,
 				F8AB33D92C328D2300BC16C9 /* Products */,
 				5B8E2782915F84A38D643D15 /* Pods */,
@@ -152,6 +157,7 @@
 		F8AB33FC2C32949600BC16C9 /* Data */ = {
 			isa = PBXGroup;
 			children = (
+				F8AB349E2C34278500BC16C9 /* CoreData */,
 				F8AB34082C32A5B900BC16C9 /* Repository */,
 				F8AB33FD2C32949B00BC16C9 /* Network */,
 			);
@@ -208,6 +214,14 @@
 				F8AB34992C34162A00BC16C9 /* Extension + Double.swift */,
 			);
 			path = Extension;
+			sourceTree = "<group>";
+		};
+		F8AB349E2C34278500BC16C9 /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				F8AB349F2C3427EA00BC16C9 /* LocationCoreData.swift */,
+			);
+			path = CoreData;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -347,6 +361,7 @@
 				F8AB33E02C328D2300BC16C9 /* MapViewController.swift in Sources */,
 				F8AB340A2C32A5CF00BC16C9 /* Repository.swift in Sources */,
 				F8AB34052C3297F800BC16C9 /* AQINetwork.swift in Sources */,
+				F8AB349D2C34272800BC16C9 /* CleanAirtecture.xcdatamodeld in Sources */,
 				F8AB34902C33F31D00BC16C9 /* Extension + Bundle.swift in Sources */,
 				F8AB33F92C32944C00BC16C9 /* NetworkError.swift in Sources */,
 				F8AB33F52C3292BC00BC16C9 /* MapUsecase.swift in Sources */,
@@ -356,6 +371,7 @@
 				F8AB33F12C328E5200BC16C9 /* LocationFetchResult.swift in Sources */,
 				F8AB348D2C33EC7500BC16C9 /* MapViewModel.swift in Sources */,
 				F8AB33F72C3293D300BC16C9 /* Location.swift in Sources */,
+				F8AB34A02C3427EA00BC16C9 /* LocationCoreData.swift in Sources */,
 				F8AB349A2C34162A00BC16C9 /* Extension + Double.swift in Sources */,
 				F8AB33DE2C328D2300BC16C9 /* SceneDelegate.swift in Sources */,
 				F8AB340D2C32B13600BC16C9 /* RepositoryProtocol.swift in Sources */,
@@ -564,6 +580,20 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		F8AB349B2C34272800BC16C9 /* CleanAirtecture.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				F8AB349C2C34272800BC16C9 /* CleanAirtecture.xcdatamodel */,
+			);
+			currentVersion = F8AB349C2C34272800BC16C9 /* CleanAirtecture.xcdatamodel */;
+			name = CleanAirtecture.xcdatamodeld;
+			path = /Users/paytalab/development/mycode/CleanAirtecture/CleanAirtecture.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = F8AB33D02C328D2300BC16C9 /* Project object */;
 }

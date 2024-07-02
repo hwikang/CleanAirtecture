@@ -76,7 +76,7 @@ class MapViewController: UIViewController, GMSMapViewDelegate {
         containerView.addSubview(labelA)
         containerView.addSubview(labelB)
         containerView.addSubview(setLocationButton)
-        
+        setConstraints()
     }
     
     private func bindViewModel() {
@@ -115,7 +115,7 @@ class MapViewController: UIViewController, GMSMapViewDelegate {
     func mapView(_ mapView: GMSMapView, idleAt position: GMSCameraPosition) {
         let latitude = position.target.latitude
         let longitude = position.target.longitude
-        print("지도 움직임 중: 위도 = \(latitude), 경도 = \(longitude)")
+        print("지도 움직임 중: 위도 = \(latitude.truncateValue()), 경도 = \(longitude.truncateValue())")
         moveMap.accept((latitude: latitude.truncateValue(), longitude: longitude.truncateValue()))
         
     }

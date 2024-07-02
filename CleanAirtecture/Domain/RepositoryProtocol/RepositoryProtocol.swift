@@ -10,4 +10,6 @@ import Foundation
 public protocol LocationRepositoryProtocol {
     func fetchLocation(latitude: Double, longitude: Double) async -> Result<LocationFetchResult, NetworkError>
     func fetchAQI(latitude: Double, longitude: Double) async -> Result<AQIFetchResult, NetworkError>
+    func getSavedLocation(latitude: Double, longitude: Double) -> Location? 
+    func saveLocation(location: Location)
 }

@@ -62,7 +62,7 @@ public struct MapViewModel: MapViewModelProtocol {
                 } else {
                     locationB.accept(location)
                 }
-
+                
             case .failure(let error):
                 self.error.accept(error.description)
             }

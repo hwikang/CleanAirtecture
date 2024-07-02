@@ -18,11 +18,19 @@ public struct MapUsecase: MapUsecaseProtocol {
         self.repository = repository
     }
     public func getLocationInfo(latitude: Double, longitude: Double) async -> Result<Location, NetworkError> {
-        //TODO: 로컬 캐시 정보불러오기
-      
-        let fetchedLocation = await fetchLocationInfo(latitude: latitude, longitude: longitude)
-        //TODO: 로컬 캐시 저장하기
-        return fetchedLocation
+        if let location = repository.getSavedLocation(latitude: latitude, longitude: longitude) {
+            return .success(location)
+        }
+        let result = await fetchLocationInfo(latitude: latitude, longitude: longitude)
+        
+        switch result {
+        case .success(let location):
+            repository.saveLocation(location: location)
+            return .success(location)
+        case .failure(let error):
+            return .failure(error)
+        }
+        
     }
     
     public func fetchAQI(latitude: Double, longitude: Double) async -> Result<Int, NetworkError> {

@@ -7,12 +7,9 @@
 
 import Foundation
 extension Double {
+
     func truncateValue() -> Double {
-        let truncatedValue = String(format: "%.4f", self)
-        if let value = Double(truncatedValue) {
-            return value
-        } else {
-            return self
-        }
+        let multiplier = pow(10.0, Double(3))
+        return (self * multiplier).rounded(.down) / multiplier
     }
 }
