@@ -10,4 +10,5 @@ target 'CleanAirtecture' do
   pod 'RxCocoa'
   pod 'SnapKit'
   pod 'Alamofire'
+  pod 'GoogleMaps'
 end
