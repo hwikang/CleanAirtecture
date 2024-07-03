@@ -16,18 +16,19 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
         // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
         // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
-        guard let windowScene = (scene as? UIWindowScene),
-              let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
+        guard let windowScene = (scene as? UIWindowScene) else { return }
         
        
         window = UIWindow(windowScene: windowScene)
         let networkManager = NetworkManager()
-        let coreData = LocationCoreData(viewContext: appDelegate.persistentContainer.viewContext)
-        let mapRP = LocationRepository(locationNetwok: LocationNetwork(manager: networkManager), aqiNetwork: AQINetwork(manager: networkManager), coreData: coreData)
+        let mapRP = LocationRepository(locationNetwok: LocationNetwork(manager: networkManager), aqiNetwork: AQINetwork(manager: networkManager), coreData: LocationCoreData())
         let mapUC = MapUsecase(repository: mapRP)
         let mapVM = MapViewModel(usecase: mapUC)
-        let mapVC = MapViewController(viewModel: mapVM)
-        let rootVC = UINavigationController(rootViewController: mapVC)
+        let rootVC = UINavigationController()
+
+        let mapCD = MapCoordinator(nav: rootVC)
+        let mapVC = MapViewController(viewModel: mapVM, coordinator: mapCD)
+        rootVC.viewControllers = [mapVC]
         window?.backgroundColor = .white
         window?.rootViewController = rootVC
         window?.makeKeyAndVisible()

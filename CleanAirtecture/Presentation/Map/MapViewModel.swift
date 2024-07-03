@@ -12,6 +12,7 @@ import RxSwift
 protocol MapViewModelProtocol {
     func transform(input: MapViewModel.Input) -> MapViewModel.Output
 }
+
 public struct MapViewModel: MapViewModelProtocol {
     private let usecase: MapUsecaseProtocol
     private let aqi = BehaviorRelay<Int>(value: 0)

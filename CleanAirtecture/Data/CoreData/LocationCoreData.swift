@@ -12,7 +12,7 @@ import CoreData
 final public class LocationCoreData {
     private let viewContext: NSManagedObjectContext
     
-    public init(viewContext: NSManagedObjectContext) {
+    public init(viewContext: NSManagedObjectContext = CoreDataManager.shared.viewContext) {
         self.viewContext = viewContext
     }
     

@@ -14,6 +14,7 @@ import RxCocoa
 
 class MapViewController: UIViewController, GMSMapViewDelegate {
     private let viewModel: MapViewModelProtocol
+    private let coordinator: MapCoordinatorProtocol
     private let locationManager = CLLocationManager()
     private var mapView: GMSMapView?
     private let disposeBag = DisposeBag()
@@ -30,19 +31,17 @@ class MapViewController: UIViewController, GMSMapViewDelegate {
         view.backgroundColor = .white
         return view
     }()
-    private let labelA = {
-        let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 14, weight: .bold)
-        label.text = "A"
-        label.textAlignment = .center
-        return label
+    private let locationA = {
+        let button = UIButton()
+        button.titleLabel?.font = UIFont.systemFont(ofSize: 14, weight: .bold)
+        button.setTitleColor(.black, for: .normal)
+        return button
     }()
-    private let labelB  = {
-        let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 14, weight: .bold)
-        label.text = "B"
-        label.textAlignment = .center
-        return label
+    private let locationB  = {
+        let button = UIButton()
+        button.titleLabel?.font = UIFont.systemFont(ofSize: 14, weight: .bold)
+        button.setTitleColor(.black, for: .normal)
+        return button
     }()
     private let setLocationButton = {
         let button = UIButton(type: .system)
@@ -51,8 +50,9 @@ class MapViewController: UIViewController, GMSMapViewDelegate {
         button.layer.borderColor = UIColor.black.cgColor
         return button
     }()
-    public init(viewModel: MapViewModelProtocol) {
+    public init(viewModel: MapViewModelProtocol, coordinator: MapCoordinatorProtocol) {
         self.viewModel = viewModel
+        self.coordinator = coordinator
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -69,19 +69,23 @@ class MapViewController: UIViewController, GMSMapViewDelegate {
         option.camera = .camera(withLatitude: latitude, longitude: longitude, zoom: 12)
         let mapView = GMSMapView(options: option)
         self.view = mapView
+        self.view.isUserInteractionEnabled = true
         mapView.delegate = self
         view.addSubview(markerImageView)
         view.addSubview(aqiLabel)
         view.addSubview(containerView)
-        containerView.addSubview(labelA)
-        containerView.addSubview(labelB)
+        containerView.addSubview(locationA)
+        containerView.addSubview(locationB)
         containerView.addSubview(setLocationButton)
         setConstraints()
+
+       
     }
     
     private func bindViewModel() {
         
-        let output = viewModel.transform(input: MapViewModel.Input(mapPosition: moveMap.asObservable(), getLocation: getLocation.asObservable()))
+        let output = viewModel.transform(input: MapViewModel.Input(mapPosition: moveMap.asObservable(), 
+                                                                   getLocation: getLocation.asObservable()))
         output.aqi.map { "AQI - \($0)" }
             .bind(to: aqiLabel.rx.text)
             .disposed(by: disposeBag)
@@ -91,8 +95,8 @@ class MapViewController: UIViewController, GMSMapViewDelegate {
         locations
             .observe(on: MainScheduler.instance)
             .bind { [weak self] (locationA, locationB) in
-            self?.labelA.text = locationA?.nickname ?? locationA?.name ?? "A"
-            self?.labelB.text = locationB?.nickname ?? locationB?.name ?? "B"
+                self?.locationA.setTitle(locationA?.nickname ?? locationA?.name ?? "A", for: .normal)
+                self?.locationB.setTitle(locationB?.nickname ?? locationB?.name ?? "B", for: .normal)
             if locationA == nil {
                 self?.setLocationButton.setTitle("SetA", for: .normal)
             } else if locationB == nil {
@@ -105,11 +109,33 @@ class MapViewController: UIViewController, GMSMapViewDelegate {
         setLocationButton.rx.tap.withLatestFrom(locations)
             .bind { [weak self] (locationA, locationB) in
                 if let locationA = locationA, let locationB = locationB {
-                    print("BOOK")
+                    //TODO: 세번째 페이지이동
                 } else {
                     self?.getLocation.accept(())
                 }
             }.disposed(by: disposeBag)
+        
+        locationA.rx.tap
+            .withLatestFrom(output.locationA)
+            .bind(onNext: { [weak self] locationA in
+                if let locationA = locationA {
+                    self?.coordinator.pushLocationDetailVC(location: locationA)
+                } else {
+                    //TODO: 다섯번째 페이지이동
+                }
+            })
+            .disposed(by: disposeBag)
+        locationB.rx.tap
+            .withLatestFrom(output.locationB)
+            .bind(onNext: { [weak self] locationB in
+                if let locationB = locationB {
+                    self?.coordinator.pushLocationDetailVC(location: locationB)
+
+                } else {
+                    //TODO: 다섯번째 페이지이동
+                }
+            })
+            .disposed(by: disposeBag)
     }
     
     func mapView(_ mapView: GMSMapView, idleAt position: GMSCameraPosition) {
@@ -121,6 +147,7 @@ class MapViewController: UIViewController, GMSMapViewDelegate {
     }
     
     private func setConstraints() {
+     
         markerImageView.snp.makeConstraints { make in
             make.center.equalToSuperview()
             make.width.height.equalTo(40)
@@ -136,12 +163,12 @@ class MapViewController: UIViewController, GMSMapViewDelegate {
             make.width.equalTo(100)
             make.top.trailing.bottom.equalToSuperview()
         }
-        labelA.snp.makeConstraints { make in
+        locationA.snp.makeConstraints { make in
             make.top.equalTo(22)
             make.leading.equalToSuperview()
             make.trailing.equalTo(setLocationButton.snp.leading)
         }
-        labelB.snp.makeConstraints { make in
+        locationB.snp.makeConstraints { make in
             make.leading.equalToSuperview()
             make.trailing.equalTo(setLocationButton.snp.leading)
             make.bottom.equalTo(-22)
@@ -176,4 +203,3 @@ extension MapViewController: CLLocationManagerDelegate {
         
     }
 }
-
