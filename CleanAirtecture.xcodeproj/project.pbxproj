@@ -36,6 +36,10 @@
 		F8F8D5BC2C358BF200500EFE /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8F8D5BB2C358BF200500EFE /* CoreDataManager.swift */; };
 		F8F8D77F2C36E4E700500EFE /* BookInfoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8F8D77E2C36E4E700500EFE /* BookInfoViewModel.swift */; };
 		F8F8D7812C36E51000500EFE /* BookInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8F8D7802C36E51000500EFE /* BookInfo.swift */; };
+		F8F8D7832C36E60600500EFE /* BookResultInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8F8D7822C36E60600500EFE /* BookResultInfo.swift */; };
+		F8F8D7852C36E70000500EFE /* BookRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8F8D7842C36E70000500EFE /* BookRepository.swift */; };
+		F8F8D7872C36E71700500EFE /* BookRepositoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8F8D7862C36E71700500EFE /* BookRepositoryProtocol.swift */; };
+		F8F8D7892C36E78100500EFE /* BookNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8F8D7882C36E78100500EFE /* BookNetwork.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -72,6 +76,10 @@
 		F8F8D5BB2C358BF200500EFE /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		F8F8D77E2C36E4E700500EFE /* BookInfoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookInfoViewModel.swift; sourceTree = "<group>"; };
 		F8F8D7802C36E51000500EFE /* BookInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookInfo.swift; sourceTree = "<group>"; };
+		F8F8D7822C36E60600500EFE /* BookResultInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookResultInfo.swift; sourceTree = "<group>"; };
+		F8F8D7842C36E70000500EFE /* BookRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookRepository.swift; sourceTree = "<group>"; };
+		F8F8D7862C36E71700500EFE /* BookRepositoryProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookRepositoryProtocol.swift; sourceTree = "<group>"; };
+		F8F8D7882C36E78100500EFE /* BookNetwork.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookNetwork.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -143,6 +151,7 @@
 			children = (
 				F8AB33F02C328E5200BC16C9 /* LocationFetchResult.swift */,
 				F8F8D7802C36E51000500EFE /* BookInfo.swift */,
+				F8F8D7822C36E60600500EFE /* BookResultInfo.swift */,
 				F8AB34062C329E9300BC16C9 /* AQIFetchResult.swift */,
 				F8AB33F62C3293D300BC16C9 /* Location.swift */,
 				F8AB33F82C32944C00BC16C9 /* NetworkError.swift */,
@@ -185,6 +194,7 @@
 			children = (
 				F8AB33FE2C32965600BC16C9 /* NetworkManager.swift */,
 				F8AB34002C3296D200BC16C9 /* LocationNetwork.swift */,
+				F8F8D7882C36E78100500EFE /* BookNetwork.swift */,
 				F8AB34042C3297F800BC16C9 /* AQINetwork.swift */,
 			);
 			path = Network;
@@ -194,6 +204,7 @@
 			isa = PBXGroup;
 			children = (
 				F8AB34092C32A5CF00BC16C9 /* LocationRepository.swift */,
+				F8F8D7842C36E70000500EFE /* BookRepository.swift */,
 			);
 			path = Repository;
 			sourceTree = "<group>";
@@ -202,6 +213,7 @@
 			isa = PBXGroup;
 			children = (
 				F8AB340C2C32B13600BC16C9 /* RepositoryProtocol.swift */,
+				F8F8D7862C36E71700500EFE /* BookRepositoryProtocol.swift */,
 			);
 			path = RepositoryProtocol;
 			sourceTree = "<group>";
@@ -400,9 +412,11 @@
 				F8AB34052C3297F800BC16C9 /* AQINetwork.swift in Sources */,
 				F8F8D77F2C36E4E700500EFE /* BookInfoViewModel.swift in Sources */,
 				F8AB349D2C34272800BC16C9 /* CleanAirtecture.xcdatamodeld in Sources */,
+				F8F8D7872C36E71700500EFE /* BookRepositoryProtocol.swift in Sources */,
 				F8F8D5BC2C358BF200500EFE /* CoreDataManager.swift in Sources */,
 				F8AB34902C33F31D00BC16C9 /* Extension + Bundle.swift in Sources */,
 				F8AB33F92C32944C00BC16C9 /* NetworkError.swift in Sources */,
+				F8F8D7892C36E78100500EFE /* BookNetwork.swift in Sources */,
 				F8F8D5BA2C358A4D00500EFE /* LocationDetailUsecase.swift in Sources */,
 				F8AB33F52C3292BC00BC16C9 /* MapUsecase.swift in Sources */,
 				F8AB33FB2C32946D00BC16C9 /* CoreDataError.swift in Sources */,
@@ -419,6 +433,8 @@
 				F8AB349A2C34162A00BC16C9 /* Extension + Double.swift in Sources */,
 				F8AB33DE2C328D2300BC16C9 /* SceneDelegate.swift in Sources */,
 				F8AB340D2C32B13600BC16C9 /* RepositoryProtocol.swift in Sources */,
+				F8F8D7852C36E70000500EFE /* BookRepository.swift in Sources */,
+				F8F8D7832C36E60600500EFE /* BookResultInfo.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
