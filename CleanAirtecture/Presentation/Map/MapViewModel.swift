@@ -16,8 +16,8 @@ protocol MapViewModelProtocol {
 public struct MapViewModel: MapViewModelProtocol {
     private let usecase: MapUsecaseProtocol
     private let aqi = BehaviorRelay<Int>(value: 0)
-    private let locationA = BehaviorRelay<Location?>(value: nil)
-    private let locationB = BehaviorRelay<Location?>(value: nil)
+    private let locationA = BehaviorRelay<(location: Location, aqi: Int)?>(value: nil)
+    private let locationB = BehaviorRelay<(location: Location, aqi: Int)?>(value: nil)
     private let error = PublishRelay<String>()
     private let disposeBag = DisposeBag()
     init(usecase: MapUsecaseProtocol) {
@@ -29,14 +29,14 @@ public struct MapViewModel: MapViewModelProtocol {
     }
     public struct Output {
         let aqi: Observable<Int>
-        let locationA: Observable<Location?>
-        let locationB: Observable<Location?>
+        let locationA: Observable<(location: Location, aqi: Int)?>
+        let locationB: Observable<(location: Location, aqi: Int)?>
     }
     public func transform(input: Input) -> Output {
         input.mapPosition.bind { (latitude, longitude) in
             getAQI(latitude: latitude, longitude: longitude)
         }.disposed(by: disposeBag)
-        input.getLocation.withLatestFrom(input.mapPosition).bind {(latitude, longitude) in
+        input.getLocation.withLatestFrom(input.mapPosition).bind { (latitude, longitude) in
             getLocation(latitude: latitude, longitude: longitude)
         }.disposed(by: disposeBag)
         return Output(aqi: aqi.asObservable(), locationA: locationA.asObservable(), locationB: locationB.asObservable())
@@ -58,10 +58,11 @@ public struct MapViewModel: MapViewModelProtocol {
             let result = await usecase.getLocationInfo(latitude: latitude, longitude: longitude)
             switch result {
             case .success(let location):
+                
                 if locationA.value == nil {
-                    locationA.accept(location)
+                    locationA.accept((location, aqi.value))
                 } else {
-                    locationB.accept(location)
+                    locationB.accept((location, aqi.value))
                 }
                 
             case .failure(let error):

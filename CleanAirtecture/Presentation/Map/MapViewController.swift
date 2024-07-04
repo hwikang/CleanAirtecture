@@ -95,8 +95,8 @@ class MapViewController: UIViewController, GMSMapViewDelegate {
         locations
             .observe(on: MainScheduler.instance)
             .bind { [weak self] (locationA, locationB) in
-                self?.locationA.setTitle(locationA?.nickname ?? locationA?.name ?? "A", for: .normal)
-                self?.locationB.setTitle(locationB?.nickname ?? locationB?.name ?? "B", for: .normal)
+                self?.locationA.setTitle(locationA?.location.nickname ?? locationA?.location.name ?? "A", for: .normal)
+                self?.locationB.setTitle(locationB?.location.nickname ?? locationB?.location.name ?? "B", for: .normal)
             if locationA == nil {
                 self?.setLocationButton.setTitle("SetA", for: .normal)
             } else if locationB == nil {
@@ -119,7 +119,8 @@ class MapViewController: UIViewController, GMSMapViewDelegate {
             .withLatestFrom(output.locationA)
             .bind(onNext: { [weak self] locationA in
                 if let locationA = locationA {
-                    self?.coordinator.pushLocationDetailVC(location: locationA)
+                    self?.coordinator.pushLocationDetailVC(location: locationA.location,
+                                                           aqi: locationA.aqi)
                 } else {
                     //TODO: 다섯번째 페이지이동
                 }
@@ -129,7 +130,8 @@ class MapViewController: UIViewController, GMSMapViewDelegate {
             .withLatestFrom(output.locationB)
             .bind(onNext: { [weak self] locationB in
                 if let locationB = locationB {
-                    self?.coordinator.pushLocationDetailVC(location: locationB)
+                    self?.coordinator.pushLocationDetailVC(location: locationB.location,
+                                                           aqi: locationB.aqi)
 
                 } else {
                     //TODO: 다섯번째 페이지이동

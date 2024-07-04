@@ -6,17 +6,56 @@
 //
 
 import Foundation
+import RxSwift
+import RxCocoa
 
 public protocol LocationDetailViewModelProtocol {
-    
+    var location: Location { get }
+    var aqi: Int { get }
+    func transform(input: LocationDetailViewModel.Input) -> LocationDetailViewModel.Output
 }
 
 public struct LocationDetailViewModel: LocationDetailViewModelProtocol {
     private let usecase: LocationDetailUsecaseProtocol
-    private let location: Location
-    init(usecase: LocationDetailUsecaseProtocol, location: Location) {
+    public let location: Location
+    public let aqi: Int
+    private let errorMessage = PublishRelay<String>()
+    private let isChangeSuccess = PublishRelay<Bool>()
+    private let nickname = BehaviorRelay<String>(value: "")
+    private let disposeBag = DisposeBag()
+
+    init(usecase: LocationDetailUsecaseProtocol, location: Location, aqi: Int) {
         self.usecase = usecase
         self.location = location
+        self.aqi = aqi
+    }
+    public struct Input {
+        let nickname: Observable<String>
+        let change: Observable<Void>
+    }
+    public struct Output {
+        let isChangeSuccess: Observable<Bool>
+        let errorMessage: Observable<String>
+    }
+    
+    public func transform(input: Input) -> Output {
+        input.nickname.bind { nickname in
+            self.nickname.accept(nickname)
+        }.disposed(by: disposeBag)
+        input.change.bind {
+            validateAndSaveNickname()
+        }.disposed(by: disposeBag)
+        return Output(isChangeSuccess: isChangeSuccess.asObservable(),
+                      errorMessage: errorMessage.asObservable())
+    }
+    
+    private func validateAndSaveNickname() {
+        if nickname.value.count > 20 {
+            errorMessage.accept("닉네임은 최대 20자 까지 가능합니다.")
+        } else {
+            //TODO: save nickname
+            isChangeSuccess.accept(true)
+        }
     }
 }
 
