@@ -10,6 +10,7 @@ import RxSwift
 
 final class LocationDetailViewController: UIViewController {
     private let viewModel: LocationDetailViewModelProtocol
+    private let onChangeNickname: ()-> Void
     private let disposeBag = DisposeBag()
 
     private let nameLabel = {
@@ -40,8 +41,9 @@ final class LocationDetailViewController: UIViewController {
         button.layer.borderColor = UIColor.black.cgColor
         return button
     }()
-    public init(viewModel: LocationDetailViewModelProtocol) {
+    public init(viewModel: LocationDetailViewModelProtocol, onChangeNickname: @escaping ()-> Void) {
         self.viewModel = viewModel
+        self.onChangeNickname = onChangeNickname
         super.init(nibName: nil, bundle: nil)
         
         setUI()
@@ -65,11 +67,18 @@ final class LocationDetailViewController: UIViewController {
         
         let output = viewModel.transform(input: LocationDetailViewModel.Input(nickname: textField.rx.text.orEmpty.distinctUntilChanged(),
                                                                  change: changeNicknameButton.rx.tap.asObservable()))
-        output.errorMessage.bind { errorMessage in
+        output.errorMessage.bind { [weak self] errorMessage in
             print(errorMessage)
+            let alert = UIAlertController(title: "에러", message: errorMessage, preferredStyle: .alert)
+            let action = UIAlertAction(title: "확인", style: .default)
+            alert.addAction(action)
+            self?.present(alert, animated: true)
         }.disposed(by: disposeBag)
         output.isChangeSuccess.bind { [weak self] isSuccess in
-            self?.navigationController?.popViewController(animated: true)
+            if isSuccess {
+                self?.onChangeNickname()
+                self?.navigationController?.popViewController(animated: true)
+            }
         }.disposed(by: disposeBag)
     }
     

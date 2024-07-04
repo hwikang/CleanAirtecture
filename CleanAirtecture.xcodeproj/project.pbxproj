@@ -21,7 +21,7 @@
 		F8AB34012C3296D200BC16C9 /* LocationNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8AB34002C3296D200BC16C9 /* LocationNetwork.swift */; };
 		F8AB34052C3297F800BC16C9 /* AQINetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8AB34042C3297F800BC16C9 /* AQINetwork.swift */; };
 		F8AB34072C329E9300BC16C9 /* AQIFetchResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8AB34062C329E9300BC16C9 /* AQIFetchResult.swift */; };
-		F8AB340A2C32A5CF00BC16C9 /* Repository.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8AB34092C32A5CF00BC16C9 /* Repository.swift */; };
+		F8AB340A2C32A5CF00BC16C9 /* LocationRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8AB34092C32A5CF00BC16C9 /* LocationRepository.swift */; };
 		F8AB340D2C32B13600BC16C9 /* RepositoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8AB340C2C32B13600BC16C9 /* RepositoryProtocol.swift */; };
 		F8AB348D2C33EC7500BC16C9 /* MapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8AB348C2C33EC7500BC16C9 /* MapViewModel.swift */; };
 		F8AB34902C33F31D00BC16C9 /* Extension + Bundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8AB348E2C33F31D00BC16C9 /* Extension + Bundle.swift */; };
@@ -34,6 +34,8 @@
 		F8F8D5B82C358A1300500EFE /* LocationDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8F8D5B72C358A1300500EFE /* LocationDetailViewModel.swift */; };
 		F8F8D5BA2C358A4D00500EFE /* LocationDetailUsecase.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8F8D5B92C358A4D00500EFE /* LocationDetailUsecase.swift */; };
 		F8F8D5BC2C358BF200500EFE /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8F8D5BB2C358BF200500EFE /* CoreDataManager.swift */; };
+		F8F8D77F2C36E4E700500EFE /* BookInfoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8F8D77E2C36E4E700500EFE /* BookInfoViewModel.swift */; };
+		F8F8D7812C36E51000500EFE /* BookInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8F8D7802C36E51000500EFE /* BookInfo.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -55,7 +57,7 @@
 		F8AB34002C3296D200BC16C9 /* LocationNetwork.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationNetwork.swift; sourceTree = "<group>"; };
 		F8AB34042C3297F800BC16C9 /* AQINetwork.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AQINetwork.swift; sourceTree = "<group>"; };
 		F8AB34062C329E9300BC16C9 /* AQIFetchResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AQIFetchResult.swift; sourceTree = "<group>"; };
-		F8AB34092C32A5CF00BC16C9 /* Repository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Repository.swift; sourceTree = "<group>"; };
+		F8AB34092C32A5CF00BC16C9 /* LocationRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationRepository.swift; sourceTree = "<group>"; };
 		F8AB340C2C32B13600BC16C9 /* RepositoryProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryProtocol.swift; sourceTree = "<group>"; };
 		F8AB348C2C33EC7500BC16C9 /* MapViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewModel.swift; sourceTree = "<group>"; };
 		F8AB348E2C33F31D00BC16C9 /* Extension + Bundle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Extension + Bundle.swift"; sourceTree = "<group>"; };
@@ -68,6 +70,8 @@
 		F8F8D5B72C358A1300500EFE /* LocationDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationDetailViewModel.swift; sourceTree = "<group>"; };
 		F8F8D5B92C358A4D00500EFE /* LocationDetailUsecase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationDetailUsecase.swift; sourceTree = "<group>"; };
 		F8F8D5BB2C358BF200500EFE /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
+		F8F8D77E2C36E4E700500EFE /* BookInfoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookInfoViewModel.swift; sourceTree = "<group>"; };
+		F8F8D7802C36E51000500EFE /* BookInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookInfo.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -138,6 +142,7 @@
 			isa = PBXGroup;
 			children = (
 				F8AB33F02C328E5200BC16C9 /* LocationFetchResult.swift */,
+				F8F8D7802C36E51000500EFE /* BookInfo.swift */,
 				F8AB34062C329E9300BC16C9 /* AQIFetchResult.swift */,
 				F8AB33F62C3293D300BC16C9 /* Location.swift */,
 				F8AB33F82C32944C00BC16C9 /* NetworkError.swift */,
@@ -188,7 +193,7 @@
 		F8AB34082C32A5B900BC16C9 /* Repository */ = {
 			isa = PBXGroup;
 			children = (
-				F8AB34092C32A5CF00BC16C9 /* Repository.swift */,
+				F8AB34092C32A5CF00BC16C9 /* LocationRepository.swift */,
 			);
 			path = Repository;
 			sourceTree = "<group>";
@@ -204,6 +209,7 @@
 		F8AB348A2C33EC3D00BC16C9 /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
+				F8F8D77D2C36E4DD00500EFE /* BookInfo */,
 				F8F8D5B42C3589BE00500EFE /* LocationDetail */,
 				F8AB348B2C33EC4500BC16C9 /* Map */,
 			);
@@ -245,6 +251,14 @@
 				F8F8D5B72C358A1300500EFE /* LocationDetailViewModel.swift */,
 			);
 			path = LocationDetail;
+			sourceTree = "<group>";
+		};
+		F8F8D77D2C36E4DD00500EFE /* BookInfo */ = {
+			isa = PBXGroup;
+			children = (
+				F8F8D77E2C36E4E700500EFE /* BookInfoViewModel.swift */,
+			);
+			path = BookInfo;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -382,8 +396,9 @@
 				F8AB33FF2C32965600BC16C9 /* NetworkManager.swift in Sources */,
 				F8AB34012C3296D200BC16C9 /* LocationNetwork.swift in Sources */,
 				F8AB33E02C328D2300BC16C9 /* MapViewController.swift in Sources */,
-				F8AB340A2C32A5CF00BC16C9 /* Repository.swift in Sources */,
+				F8AB340A2C32A5CF00BC16C9 /* LocationRepository.swift in Sources */,
 				F8AB34052C3297F800BC16C9 /* AQINetwork.swift in Sources */,
+				F8F8D77F2C36E4E700500EFE /* BookInfoViewModel.swift in Sources */,
 				F8AB349D2C34272800BC16C9 /* CleanAirtecture.xcdatamodeld in Sources */,
 				F8F8D5BC2C358BF200500EFE /* CoreDataManager.swift in Sources */,
 				F8AB34902C33F31D00BC16C9 /* Extension + Bundle.swift in Sources */,
@@ -392,6 +407,7 @@
 				F8AB33F52C3292BC00BC16C9 /* MapUsecase.swift in Sources */,
 				F8AB33FB2C32946D00BC16C9 /* CoreDataError.swift in Sources */,
 				F8AB34072C329E9300BC16C9 /* AQIFetchResult.swift in Sources */,
+				F8F8D7812C36E51000500EFE /* BookInfo.swift in Sources */,
 				F8AB33DC2C328D2300BC16C9 /* AppDelegate.swift in Sources */,
 				F8AB33F12C328E5200BC16C9 /* LocationFetchResult.swift in Sources */,
 				F8F8D5B32C3588E100500EFE /* MapCoordinator.swift in Sources */,

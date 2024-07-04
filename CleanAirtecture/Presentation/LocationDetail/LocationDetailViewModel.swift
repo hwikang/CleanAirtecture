@@ -53,8 +53,9 @@ public struct LocationDetailViewModel: LocationDetailViewModelProtocol {
         if nickname.value.count > 20 {
             errorMessage.accept("닉네임은 최대 20자 까지 가능합니다.")
         } else {
-            //TODO: save nickname
-            isChangeSuccess.accept(true)
+            let result = usecase.updateNickname(latitude: location.latitude, longitude: location.longitude,
+                                                nickname: nickname.value)
+            isChangeSuccess.accept(result)
         }
     }
 }

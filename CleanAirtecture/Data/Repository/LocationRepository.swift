@@ -24,8 +24,8 @@ public struct LocationRepository: LocationRepositoryProtocol {
         await aqiNetwork.fetchAQI(latitude: latitude, longitude: longitude)
     }
     
-    public func getSavedLocation(latitude: Double, longitude: Double) -> Location? {
-        let result = coreData.getSavedLocation(latitude: latitude, longitude: longitude)
+    public func getLocation(latitude: Double, longitude: Double) -> Location? {
+        let result = coreData.getLocation(latitude: latitude, longitude: longitude)
         switch result {
         case .success(let location):
             return location
@@ -43,6 +43,17 @@ public struct LocationRepository: LocationRepositoryProtocol {
         case .failure(let error):
             print(error.description)
             return
+        }
+    }
+    
+    public func updateLocation(latitude: Double, longitude: Double, nickname: String) -> Bool {
+        let result = coreData.updateLocation(latitude: latitude, longitude: longitude, nickname: nickname)
+        switch result {
+        case .success(let result):
+            return result
+        case .failure(let error):
+            print(error.description)
+            return false
         }
     }
     

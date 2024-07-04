@@ -20,6 +20,7 @@ class MapViewController: UIViewController, GMSMapViewDelegate {
     private let disposeBag = DisposeBag()
     private let moveMap = PublishRelay<(latitude: Double, longitude: Double)>()
     private let getLocation = PublishRelay<Void>()
+    private let refreshCurrentLocation = PublishRelay<Void>()
     private let markerImageView = UIImageView(image: UIImage(named: "custom_pin"))
     private let aqiLabel = {
         let label = UILabel()
@@ -85,7 +86,7 @@ class MapViewController: UIViewController, GMSMapViewDelegate {
     private func bindViewModel() {
         
         let output = viewModel.transform(input: MapViewModel.Input(mapPosition: moveMap.asObservable(), 
-                                                                   getLocation: getLocation.asObservable()))
+                                                                   getLocation: getLocation.asObservable(), refreshLocation: refreshCurrentLocation.asObservable()))
         output.aqi.map { "AQI - \($0)" }
             .bind(to: aqiLabel.rx.text)
             .disposed(by: disposeBag)
@@ -120,7 +121,8 @@ class MapViewController: UIViewController, GMSMapViewDelegate {
             .bind(onNext: { [weak self] locationA in
                 if let locationA = locationA {
                     self?.coordinator.pushLocationDetailVC(location: locationA.location,
-                                                           aqi: locationA.aqi)
+                                                           aqi: locationA.aqi,
+                                                           onChangeNickname: { self?.refreshCurrentLocation.accept(()) })
                 } else {
                     //TODO: 다섯번째 페이지이동
                 }
@@ -131,7 +133,8 @@ class MapViewController: UIViewController, GMSMapViewDelegate {
             .bind(onNext: { [weak self] locationB in
                 if let locationB = locationB {
                     self?.coordinator.pushLocationDetailVC(location: locationB.location,
-                                                           aqi: locationB.aqi)
+                                                           aqi: locationB.aqi,
+                                                           onChangeNickname: { self?.refreshCurrentLocation.accept(()) })
 
                 } else {
                     //TODO: 다섯번째 페이지이동

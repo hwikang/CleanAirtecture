@@ -18,7 +18,7 @@ public struct MapUsecase: MapUsecaseProtocol {
         self.repository = repository
     }
     public func getLocationInfo(latitude: Double, longitude: Double) async -> Result<Location, NetworkError> {
-        if let location = repository.getSavedLocation(latitude: latitude, longitude: longitude) {
+        if let location = repository.getLocation(latitude: latitude, longitude: longitude) {
             return .success(location)
         }
         let result = await fetchLocationInfo(latitude: latitude, longitude: longitude)

@@ -26,6 +26,7 @@ public struct MapViewModel: MapViewModelProtocol {
     public struct Input {
         let mapPosition: Observable<(latitude: Double, longitude: Double)>
         let getLocation: Observable<Void>
+        let refreshLocation: Observable<Void>
     }
     public struct Output {
         let aqi: Observable<Int>
@@ -37,7 +38,10 @@ public struct MapViewModel: MapViewModelProtocol {
             getAQI(latitude: latitude, longitude: longitude)
         }.disposed(by: disposeBag)
         input.getLocation.withLatestFrom(input.mapPosition).bind { (latitude, longitude) in
-            getLocation(latitude: latitude, longitude: longitude)
+            setLocation(latitude: latitude, longitude: longitude)
+        }.disposed(by: disposeBag)
+        input.refreshLocation.bind {
+            refreshCurrentLocation()
         }.disposed(by: disposeBag)
         return Output(aqi: aqi.asObservable(), locationA: locationA.asObservable(), locationB: locationB.asObservable())
     }
@@ -53,22 +57,41 @@ public struct MapViewModel: MapViewModelProtocol {
             }
         }
     }
-    private func getLocation(latitude: Double, longitude: Double) {
+    
+    private func setLocation(latitude: Double, longitude: Double) {
         Task {
-            let result = await usecase.getLocationInfo(latitude: latitude, longitude: longitude)
-            switch result {
-            case .success(let location):
-                
-                if locationA.value == nil {
-                    locationA.accept((location, aqi.value))
-                } else {
-                    locationB.accept((location, aqi.value))
-                }
-                
-            case .failure(let error):
-                self.error.accept(error.description)
+            guard let location = await getLocation(latitude: latitude, longitude: longitude) else { return }
+            if locationA.value == nil {
+                locationA.accept((location, aqi.value))
+            } else {
+                locationB.accept((location, aqi.value))
             }
         }
-       
+    }
+    
+    private func getLocation(latitude: Double, longitude: Double) async -> Location? {
+        
+        let result = await usecase.getLocationInfo(latitude: latitude, longitude: longitude)
+        switch result {
+        case .success(let location):
+            return location
+            
+        case .failure(let error):
+            self.error.accept(error.description)
+            return nil
+        }
+    }
+    
+    private func refreshCurrentLocation() {
+        Task {
+            if let (location, aqi) = locationA.value {
+                guard let newLocation = await getLocation(latitude: location.latitude, longitude: location.longitude) else { return }
+                locationA.accept((newLocation, aqi))
+            }
+            if let (location, aqi) = locationB.value {
+                guard let newLocation = await getLocation(latitude: location.latitude, longitude: location.longitude) else { return }
+                locationB.accept((newLocation, aqi))
+            }
+        }
     }
 }
