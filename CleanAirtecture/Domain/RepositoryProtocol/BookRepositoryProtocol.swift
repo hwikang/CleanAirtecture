@@ -9,4 +9,5 @@ import Foundation
 
 public protocol BookRepositoryProtocol {
     func requestBook(a: BookInfo, b: BookInfo) async -> Result<BookResultInfo, NetworkError>
+    func getLocationNickname(latitude: Double, longitude: Double) -> String?
 }

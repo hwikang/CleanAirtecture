@@ -13,7 +13,20 @@ public struct BookRepository: BookRepositoryProtocol {
         self.bookNetwork = bookNetwork
         self.coreData = coreData
     }
+    
     public func requestBook(a: BookInfo, b: BookInfo) async -> Result<BookResultInfo, NetworkError> {
         await bookNetwork.requestBook(a: a, b: b)
     }
+    
+    public func getLocationNickname(latitude: Double, longitude: Double) -> String? {
+        let result = coreData.getLocation(latitude: latitude, longitude: longitude)
+        switch result {
+        case .success(let location):
+            return location?.nickname
+        case .failure(let error):
+            print(error.description)
+            return nil
+        }
+    }
+    
 }

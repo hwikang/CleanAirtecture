@@ -32,6 +32,7 @@ public struct MapViewModel: MapViewModelProtocol {
         let aqi: Observable<Int>
         let locationA: Observable<(location: Location, aqi: Int)?>
         let locationB: Observable<(location: Location, aqi: Int)?>
+        let error: Observable<String>
     }
     public func transform(input: Input) -> Output {
         input.mapPosition.bind { (latitude, longitude) in
@@ -43,7 +44,9 @@ public struct MapViewModel: MapViewModelProtocol {
         input.refreshLocation.bind {
             refreshCurrentLocation()
         }.disposed(by: disposeBag)
-        return Output(aqi: aqi.asObservable(), locationA: locationA.asObservable(), locationB: locationB.asObservable())
+        return Output(aqi: aqi.asObservable(), locationA: locationA.asObservable(),
+                      locationB: locationB.asObservable(),
+                      error: error.asObservable())
     }
     
     private func getAQI(latitude: Double, longitude: Double) {

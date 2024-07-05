@@ -110,7 +110,10 @@ class MapViewController: UIViewController, GMSMapViewDelegate {
         setLocationButton.rx.tap.withLatestFrom(locations)
             .bind { [weak self] (locationA, locationB) in
                 if let locationA = locationA, let locationB = locationB {
-                    //TODO: 세번째 페이지이동
+                    self?.coordinator.pushBookInfoVC(locationA: locationA.location,
+                                                     locationB: locationB.location,
+                                                     aqiA: locationB.aqi,
+                                                     aqiB: locationB.aqi)
                 } else {
                     self?.getLocation.accept(())
                 }

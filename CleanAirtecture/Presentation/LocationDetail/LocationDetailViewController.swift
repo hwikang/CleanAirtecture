@@ -68,7 +68,7 @@ final class LocationDetailViewController: UIViewController {
         let output = viewModel.transform(input: LocationDetailViewModel.Input(nickname: textField.rx.text.orEmpty.distinctUntilChanged(),
                                                                  change: changeNicknameButton.rx.tap.asObservable()))
         output.errorMessage.bind { [weak self] errorMessage in
-            print(errorMessage)
+
             let alert = UIAlertController(title: "에러", message: errorMessage, preferredStyle: .alert)
             let action = UIAlertAction(title: "확인", style: .default)
             alert.addAction(action)
