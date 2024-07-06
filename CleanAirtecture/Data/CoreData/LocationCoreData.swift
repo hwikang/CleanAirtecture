@@ -67,7 +67,7 @@ final public class LocationCoreData {
         
         do {
             let location = try getSavedLocation(latitude: latitude, longitude: longitude)
-            guard let location = location else { return .success(false) }
+            guard let location = location else { return .failure(.entityNotFound("Location")) }
             location.nickname = nickname
             try viewContext.save()
             return .success(true)

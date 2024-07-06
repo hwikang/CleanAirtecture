@@ -10,8 +10,6 @@ import RxSwift
 import RxCocoa
 
 public protocol LocationDetailViewModelProtocol {
-    var location: Location { get }
-    var aqi: Int { get }
     func transform(input: LocationDetailViewModel.Input) -> LocationDetailViewModel.Output
 }
 
@@ -34,6 +32,7 @@ public struct LocationDetailViewModel: LocationDetailViewModelProtocol {
         let change: Observable<Void>
     }
     public struct Output {
+        let locationData: Observable<(location: Location, aqi: Int)>
         let isChangeSuccess: Observable<Bool>
         let errorMessage: Observable<String>
     }
@@ -45,7 +44,8 @@ public struct LocationDetailViewModel: LocationDetailViewModelProtocol {
         input.change.bind {
             validateAndSaveNickname()
         }.disposed(by: disposeBag)
-        return Output(isChangeSuccess: isChangeSuccess.asObservable(),
+        return Output(locationData: Observable.just((location: location,aqi:aqi)),
+                      isChangeSuccess: isChangeSuccess.asObservable(),
                       errorMessage: errorMessage.asObservable())
     }
     

@@ -57,29 +57,42 @@ final class LocationDetailViewController: UIViewController {
         view.addSubview(locationLabel)
         view.addSubview(textField)
         view.addSubview(changeNicknameButton)
+       
         setConstraints()
+
     }
     
     private func bindViewModel() {
-        nameLabel.text = "지역명 - " + viewModel.location.name
-        aqiLabel.text = "AQI - " + viewModel.aqi.description
-        locationLabel.text = "위도 - \(viewModel.location.latitude) 경도 - \(viewModel.location.longitude)"
-        
+       
         let output = viewModel.transform(input: LocationDetailViewModel.Input(nickname: textField.rx.text.orEmpty.distinctUntilChanged(),
                                                                  change: changeNicknameButton.rx.tap.asObservable()))
+        
+        output.locationData.bind { [weak self] location, aqi in
+            self?.nameLabel.text = "지역명 - " + location.name
+            self?.aqiLabel.text = "AQI - " + aqi.description
+            self?.locationLabel.text = "위도 - \(location.latitude) 경도 - \(location.longitude)"
+            self?.textField.text = location.nickname
+            
+        }.disposed(by: disposeBag)
         output.errorMessage.bind { [weak self] errorMessage in
-
-            let alert = UIAlertController(title: "에러", message: errorMessage, preferredStyle: .alert)
-            let action = UIAlertAction(title: "확인", style: .default)
-            alert.addAction(action)
-            self?.present(alert, animated: true)
+            self?.presentError(errorMessage: errorMessage)
         }.disposed(by: disposeBag)
         output.isChangeSuccess.bind { [weak self] isSuccess in
             if isSuccess {
                 self?.onChangeNickname()
                 self?.navigationController?.popViewController(animated: true)
+            } else {
+                self?.presentError(errorMessage: "닉네임 변경에 실패하였습니다.")
+
             }
         }.disposed(by: disposeBag)
+    }
+    
+    private func presentError(errorMessage: String) {
+        let alert = UIAlertController(title: "에러", message: errorMessage, preferredStyle: .alert)
+        let action = UIAlertAction(title: "확인", style: .default)
+        alert.addAction(action)
+        present(alert, animated: true)
     }
     
     private func setConstraints() {
