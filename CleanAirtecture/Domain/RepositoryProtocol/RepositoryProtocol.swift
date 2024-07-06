@@ -13,4 +13,5 @@ public protocol LocationRepositoryProtocol {
     func getLocation(latitude: Double, longitude: Double) -> Location? 
     func saveLocation(location: Location)
     func updateLocation(latitude: Double, longitude: Double, nickname: String) -> Bool
+    func getLocations() -> [Location]
 }

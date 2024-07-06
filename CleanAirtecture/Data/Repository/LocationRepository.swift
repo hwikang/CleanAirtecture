@@ -57,4 +57,15 @@ public struct LocationRepository: LocationRepositoryProtocol {
         }
     }
     
+    public func getLocations() -> [Location] {
+        let result = coreData.getLocations()
+        switch result {
+        case .success(let result):
+            return result
+        case .failure(let error):
+            print(error.description)
+            return []
+        }
+    }
+    
 }

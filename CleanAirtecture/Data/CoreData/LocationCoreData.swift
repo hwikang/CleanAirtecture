@@ -58,7 +58,7 @@ final public class LocationCoreData {
             return .success(Location(latitude: location.latitude, longitude: location.longitude, name: name, nickname: location.nickname))
             
         } catch let error as NSError {
-            print("Fetching error: \(error)")
+            print("Error get location -\(latitude) , \(longitude): \(error)")
             return .failure(.readError(error.localizedDescription))
         }
     }
@@ -75,6 +75,20 @@ final public class LocationCoreData {
             print("Error updating nickname: \(error)")
             return .failure(.updateError(error.localizedDescription))
         }
+    }
+    
+    public func getLocations() -> Result<[Location], CoreDataError> {
+        do {
+            let fetchRequest: NSFetchRequest<SavedLocation> = SavedLocation.fetchRequest()
+            let result = try viewContext.fetch(fetchRequest)
+            let locations = result.map { Location(latitude: $0.latitude, longitude: $0.longitude, name: $0.name ?? "",
+                                                  nickname: $0.nickname) }
+            return.success(locations)
+        } catch let error as NSError {
+            print("Error get locations: \(error)")
+            return .failure(.readError(error.localizedDescription))
+        }
+       
     }
     
     private func getSavedLocation(latitude: Double, longitude: Double) throws -> SavedLocation? {

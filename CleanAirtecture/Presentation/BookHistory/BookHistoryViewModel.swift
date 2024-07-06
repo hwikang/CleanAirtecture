@@ -21,7 +21,7 @@ public struct BookHistoryViewModel: BookHistoryViewModelProtocol {
 
     public init(usecase: BookHistoryUsecaseProtocol) {
         self.usecase = usecase
-        requestBookHostory()
+        requestBookHistory()
     }
  
     public struct Output {
@@ -45,7 +45,7 @@ public struct BookHistoryViewModel: BookHistoryViewModelProtocol {
         bookHistory.value[index]
     }
     
-    private func requestBookHostory() {
+    private func requestBookHistory() {
         Task {
             let result = await usecase.fetchBookHistory()
             switch result {

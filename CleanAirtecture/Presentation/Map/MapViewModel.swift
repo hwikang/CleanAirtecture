@@ -40,7 +40,7 @@ public struct MapViewModel: MapViewModelProtocol {
             setAQI(latitude: latitude, longitude: longitude)
         }.disposed(by: disposeBag)
         input.getLocation.withLatestFrom(input.mapPosition).bind { (latitude, longitude) in
-            setLocation(latitude: latitude, longitude: longitude)
+            fetchAndSetLocation(latitude: latitude, longitude: longitude)
         }.disposed(by: disposeBag)
         input.refreshLocation.bind {
             refreshCurrentLocation()
@@ -71,18 +71,22 @@ public struct MapViewModel: MapViewModelProtocol {
         }
     }
     
-    private func setLocation(latitude: Double, longitude: Double) {
+    private func fetchAndSetLocation(latitude: Double, longitude: Double) {
         Task {
-            guard let location = await getLocation(latitude: latitude, longitude: longitude) else { return }
-            if locationA.value == nil {
-                locationA.accept((location, aqi.value))
-            } else {
-                locationB.accept((location, aqi.value))
-            }
+            guard let location = await fetchLocation(latitude: latitude, longitude: longitude) else { return }
+            setEmptyLocation(location: location, aqi: aqi.value)
         }
     }
     
-    private func getLocation(latitude: Double, longitude: Double) async -> Location? {
+    private func setEmptyLocation(location:Location, aqi: Int) {
+        if locationA.value == nil {
+            locationA.accept((location, aqi))
+        } else {
+            locationB.accept((location, aqi))
+        }
+    }
+    
+    private func fetchLocation(latitude: Double, longitude: Double) async -> Location? {
         
         let result = await usecase.getLocationInfo(latitude: latitude, longitude: longitude)
         switch result {
@@ -98,11 +102,11 @@ public struct MapViewModel: MapViewModelProtocol {
     private func refreshCurrentLocation() {
         Task {
             if let (location, aqi) = locationA.value {
-                guard let newLocation = await getLocation(latitude: location.latitude, longitude: location.longitude) else { return }
+                guard let newLocation = await fetchLocation(latitude: location.latitude, longitude: location.longitude) else { return }
                 locationA.accept((newLocation, aqi))
             }
             if let (location, aqi) = locationB.value {
-                guard let newLocation = await getLocation(latitude: location.latitude, longitude: location.longitude) else { return }
+                guard let newLocation = await fetchLocation(latitude: location.latitude, longitude: location.longitude) else { return }
                 locationB.accept((newLocation, aqi))
             }
         }
@@ -114,6 +118,13 @@ public struct MapViewModel: MapViewModelProtocol {
             let aqiB = await fetchAQI(latitude: locationB.latitude, longitude: locationB.longitude)
             self.locationA.accept((location: locationA, aqi: aqiA))
             self.locationB.accept((location: locationB, aqi: aqiB))
+        }
+    }
+    
+    private func setLocationWithNewAQI(location: Location) {
+        Task {
+            let aqi = await fetchAQI(latitude: location.latitude, longitude: location.longitude)
+            setEmptyLocation(location: location, aqi: aqi)
         }
     }
 }
