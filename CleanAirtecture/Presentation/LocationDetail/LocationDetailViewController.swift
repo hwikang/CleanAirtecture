@@ -61,7 +61,7 @@ final class LocationDetailViewController: UIViewController {
     }
     
     private func bindViewModel() {
-        nameLabel.text = "지역명" + viewModel.location.name
+        nameLabel.text = "지역명 - " + viewModel.location.name
         aqiLabel.text = "AQI - " + viewModel.aqi.description
         locationLabel.text = "위도 - \(viewModel.location.latitude) 경도 - \(viewModel.location.longitude)"
         

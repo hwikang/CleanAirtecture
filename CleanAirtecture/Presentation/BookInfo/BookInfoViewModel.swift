@@ -15,22 +15,24 @@ protocol BookInfoViewModelProtocol {
 
 public struct BookInfoViewModel: BookInfoViewModelProtocol {
     private let usecase: BookInfoUsecaseProtocol
-    private let bookResultInfo = PublishRelay<BookResultInfo>()
+    private let requestInfoA: BookInfo, requestInfoB: BookInfo
+    private let bookResultInfo = BehaviorRelay<BookResultInfo?>(value: nil)
     private let errorMessage = PublishRelay<String>()
-
+    private let disposeBag = DisposeBag()
     public init(usecase: BookInfoUsecaseProtocol, requestInfoA: BookInfo, requestInfoB: BookInfo) {
         self.usecase = usecase
+        self.requestInfoA = requestInfoA
+        self.requestInfoB = requestInfoB
         requestBook(requestInfoA: requestInfoA, requestInfoB: requestInfoB)
+
     }
-    
     public struct Output {
         let bookResultInfo: Observable<BookResultInfo>
         let errorMessage: Observable<String>
-
     }
     
     public func transform() -> Output {
-        return Output(bookResultInfo: bookResultInfo.asObservable(),
+        return Output(bookResultInfo: bookResultInfo.asObservable().compactMap({ $0 }),
                       errorMessage: errorMessage.asObservable())
     }
     

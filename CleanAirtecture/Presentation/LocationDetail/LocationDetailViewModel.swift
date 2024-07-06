@@ -50,8 +50,11 @@ public struct LocationDetailViewModel: LocationDetailViewModelProtocol {
     }
     
     private func validateAndSaveNickname() {
+        
         if nickname.value.count > 20 {
             errorMessage.accept("닉네임은 최대 20자 까지 가능합니다.")
+        } else if nickname.value.isEmpty {
+            errorMessage.accept("닉네임을 입력 해주세요")
         } else {
             let result = usecase.updateNickname(latitude: location.latitude, longitude: location.longitude,
                                                 nickname: nickname.value)
