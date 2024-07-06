@@ -21,6 +21,8 @@ class MapViewController: UIViewController, GMSMapViewDelegate {
     private let moveMap = PublishRelay<(latitude: Double, longitude: Double)>()
     private let getLocation = PublishRelay<Void>()
     private let refreshCurrentLocation = PublishRelay<Void>()
+    private let changeLocation = PublishRelay<(locationA: Location, locationB: Location)>()
+
     private let markerImageView = UIImageView(image: UIImage(named: "custom_pin"))
     private let aqiLabel = {
         let label = UILabel()
@@ -65,6 +67,10 @@ class MapViewController: UIViewController, GMSMapViewDelegate {
         bindViewModel()
     }
     
+    public func changeLocation(locationA: Location, locationB: Location) {
+        changeLocation.accept((locationA: locationA, locationB: locationB))
+    }
+    
     private func setUI(latitude: Double, longitude: Double) {
         let option = GMSMapViewOptions()
         option.camera = .camera(withLatitude: latitude, longitude: longitude, zoom: 12)
@@ -86,7 +92,9 @@ class MapViewController: UIViewController, GMSMapViewDelegate {
     private func bindViewModel() {
         
         let output = viewModel.transform(input: MapViewModel.Input(mapPosition: moveMap.asObservable(), 
-                                                                   getLocation: getLocation.asObservable(), refreshLocation: refreshCurrentLocation.asObservable()))
+                                                                   getLocation: getLocation.asObservable(),
+                                                                   refreshLocation: refreshCurrentLocation.asObservable(),
+                                                                   changeLocation: changeLocation.asObservable()))
         output.aqi.map { "AQI - \($0)" }
             .bind(to: aqiLabel.rx.text)
             .disposed(by: disposeBag)
@@ -112,7 +120,7 @@ class MapViewController: UIViewController, GMSMapViewDelegate {
                 if let locationA = locationA, let locationB = locationB {
                     self?.coordinator.pushBookInfoVC(locationA: locationA.location,
                                                      locationB: locationB.location,
-                                                     aqiA: locationB.aqi,
+                                                     aqiA: locationA.aqi,
                                                      aqiB: locationB.aqi)
                 } else {
                     self?.getLocation.accept(())

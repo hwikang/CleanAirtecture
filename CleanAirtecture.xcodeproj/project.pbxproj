@@ -34,6 +34,10 @@
 		F8F524242C38E2B10006D460 /* BookHistoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8F524232C38E2B10006D460 /* BookHistoryViewModel.swift */; };
 		F8F524262C38E2C40006D460 /* BookHistoryUsecase.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8F524252C38E2C40006D460 /* BookHistoryUsecase.swift */; };
 		F8F524282C38E3880006D460 /* BookInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8F524272C38E3880006D460 /* BookInfoView.swift */; };
+		F8F524502C38EDD30006D460 /* BookHistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8F5244F2C38EDD30006D460 /* BookHistoryViewController.swift */; };
+		F8F524522C38EE690006D460 /* BookHistoryCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8F524512C38EE690006D460 /* BookHistoryCoordinator.swift */; };
+		F8F524542C38EE960006D460 /* BookInfoCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8F524532C38EE960006D460 /* BookInfoCoordinator.swift */; };
+		F8F524562C38F6BC0006D460 /* BookHistoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8F524552C38F6BC0006D460 /* BookHistoryTableViewCell.swift */; };
 		F8F8D5B32C3588E100500EFE /* MapCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8F8D5B22C3588E100500EFE /* MapCoordinator.swift */; };
 		F8F8D5B62C3589CF00500EFE /* LocationDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8F8D5B52C3589CF00500EFE /* LocationDetailViewController.swift */; };
 		F8F8D5B82C358A1300500EFE /* LocationDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8F8D5B72C358A1300500EFE /* LocationDetailViewModel.swift */; };
@@ -79,6 +83,10 @@
 		F8F524232C38E2B10006D460 /* BookHistoryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookHistoryViewModel.swift; sourceTree = "<group>"; };
 		F8F524252C38E2C40006D460 /* BookHistoryUsecase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookHistoryUsecase.swift; sourceTree = "<group>"; };
 		F8F524272C38E3880006D460 /* BookInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookInfoView.swift; sourceTree = "<group>"; };
+		F8F5244F2C38EDD30006D460 /* BookHistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookHistoryViewController.swift; sourceTree = "<group>"; };
+		F8F524512C38EE690006D460 /* BookHistoryCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookHistoryCoordinator.swift; sourceTree = "<group>"; };
+		F8F524532C38EE960006D460 /* BookInfoCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookInfoCoordinator.swift; sourceTree = "<group>"; };
+		F8F524552C38F6BC0006D460 /* BookHistoryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookHistoryTableViewCell.swift; sourceTree = "<group>"; };
 		F8F8D5B22C3588E100500EFE /* MapCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapCoordinator.swift; sourceTree = "<group>"; };
 		F8F8D5B52C3589CF00500EFE /* LocationDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationDetailViewController.swift; sourceTree = "<group>"; };
 		F8F8D5B72C358A1300500EFE /* LocationDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationDetailViewModel.swift; sourceTree = "<group>"; };
@@ -273,6 +281,9 @@
 			isa = PBXGroup;
 			children = (
 				F8F524232C38E2B10006D460 /* BookHistoryViewModel.swift */,
+				F8F5244F2C38EDD30006D460 /* BookHistoryViewController.swift */,
+				F8F524552C38F6BC0006D460 /* BookHistoryTableViewCell.swift */,
+				F8F524512C38EE690006D460 /* BookHistoryCoordinator.swift */,
 			);
 			path = BookHistory;
 			sourceTree = "<group>";
@@ -291,6 +302,7 @@
 			children = (
 				F8F8D77E2C36E4E700500EFE /* BookInfoViewModel.swift */,
 				F8F524202C383D930006D460 /* BookInfoViewController.swift */,
+				F8F524532C38EE960006D460 /* BookInfoCoordinator.swift */,
 				F8F524272C38E3880006D460 /* BookInfoView.swift */,
 			);
 			path = BookInfo;
@@ -428,16 +440,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F8F524542C38EE960006D460 /* BookInfoCoordinator.swift in Sources */,
 				F8AB33FF2C32965600BC16C9 /* NetworkManager.swift in Sources */,
 				F8AB34012C3296D200BC16C9 /* LocationNetwork.swift in Sources */,
 				F8AB33E02C328D2300BC16C9 /* MapViewController.swift in Sources */,
 				F8AB340A2C32A5CF00BC16C9 /* LocationRepository.swift in Sources */,
 				F8AB34052C3297F800BC16C9 /* AQINetwork.swift in Sources */,
 				F8F8D77F2C36E4E700500EFE /* BookInfoViewModel.swift in Sources */,
+				F8F524562C38F6BC0006D460 /* BookHistoryTableViewCell.swift in Sources */,
 				F8AB349D2C34272800BC16C9 /* CleanAirtecture.xcdatamodeld in Sources */,
 				F8F8D7872C36E71700500EFE /* BookRepositoryProtocol.swift in Sources */,
 				F8F8D5BC2C358BF200500EFE /* CoreDataManager.swift in Sources */,
 				F8F524262C38E2C40006D460 /* BookHistoryUsecase.swift in Sources */,
+				F8F524502C38EDD30006D460 /* BookHistoryViewController.swift in Sources */,
 				F8AB34902C33F31D00BC16C9 /* Extension + Bundle.swift in Sources */,
 				F8AB33F92C32944C00BC16C9 /* NetworkError.swift in Sources */,
 				F8F8D7892C36E78100500EFE /* BookNetwork.swift in Sources */,
@@ -460,6 +475,7 @@
 				F8F8D5B82C358A1300500EFE /* LocationDetailViewModel.swift in Sources */,
 				F8AB349A2C34162A00BC16C9 /* Extension + Double.swift in Sources */,
 				F8AB33DE2C328D2300BC16C9 /* SceneDelegate.swift in Sources */,
+				F8F524522C38EE690006D460 /* BookHistoryCoordinator.swift in Sources */,
 				F8AB340D2C32B13600BC16C9 /* RepositoryProtocol.swift in Sources */,
 				F8F8D7852C36E70000500EFE /* BookRepository.swift in Sources */,
 				F8F8D7832C36E60600500EFE /* BookResultInfo.swift in Sources */,

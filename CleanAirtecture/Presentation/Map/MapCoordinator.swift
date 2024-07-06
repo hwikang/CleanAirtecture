@@ -31,7 +31,8 @@ public struct MapCoordinator: MapCoordinatorProtocol {
         let bookRP = BookRepository(bookNetwork: BookNetwork(manager: NetworkManager()), coreData: LocationCoreData())
         let bookInfoUC = BookInfoUsecase(repository: bookRP)
         let bookInfoVM = BookInfoViewModel(usecase: bookInfoUC, requestInfoA: bookInfoA, requestInfoB: bookInfoB)
-        let bookInfoVC = BookInfoViewController(viewModel: bookInfoVM)
+        let bookInfoCD = BookInfoCoordinator(nav: nav)
+        let bookInfoVC = BookInfoViewController(viewModel: bookInfoVM, coordinator: bookInfoCD)
         nav.pushViewController(bookInfoVC, animated: true)
 
     }

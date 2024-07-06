@@ -27,6 +27,7 @@ public struct MapViewModel: MapViewModelProtocol {
         let mapPosition: Observable<(latitude: Double, longitude: Double)>
         let getLocation: Observable<Void>
         let refreshLocation: Observable<Void>
+        let changeLocation: Observable<(locationA: Location, locationB: Location)>
     }
     public struct Output {
         let aqi: Observable<Int>
@@ -36,7 +37,7 @@ public struct MapViewModel: MapViewModelProtocol {
     }
     public func transform(input: Input) -> Output {
         input.mapPosition.bind { (latitude, longitude) in
-            getAQI(latitude: latitude, longitude: longitude)
+            setAQI(latitude: latitude, longitude: longitude)
         }.disposed(by: disposeBag)
         input.getLocation.withLatestFrom(input.mapPosition).bind { (latitude, longitude) in
             setLocation(latitude: latitude, longitude: longitude)
@@ -44,20 +45,29 @@ public struct MapViewModel: MapViewModelProtocol {
         input.refreshLocation.bind {
             refreshCurrentLocation()
         }.disposed(by: disposeBag)
+        input.changeLocation.bind { newLocations in
+            changeLocation(locationA: newLocations.locationA, locationB: newLocations.locationB)
+        }.disposed(by: disposeBag)
         return Output(aqi: aqi.asObservable(), locationA: locationA.asObservable(),
                       locationB: locationB.asObservable(),
                       error: error.asObservable())
     }
     
-    private func getAQI(latitude: Double, longitude: Double) {
+    private func setAQI(latitude: Double, longitude: Double) {
         Task {
-            let result = await usecase.fetchAQI(latitude: latitude, longitude: longitude)
-            switch result {
-            case .success(let aqi):
-                self.aqi.accept(aqi)
-            case .failure(let error):
-                self.error.accept(error.description)
-            }
+            let aqi = await fetchAQI(latitude: latitude, longitude: longitude)
+            self.aqi.accept(aqi)
+        }
+    }
+    
+    private func fetchAQI(latitude: Double, longitude: Double) async -> Int {
+        let result = await usecase.fetchAQI(latitude: latitude, longitude: longitude)
+        switch result {
+        case .success(let aqi):
+            return aqi
+        case .failure(let error):
+            self.error.accept(error.description)
+            return 0
         }
     }
     
@@ -95,6 +105,15 @@ public struct MapViewModel: MapViewModelProtocol {
                 guard let newLocation = await getLocation(latitude: location.latitude, longitude: location.longitude) else { return }
                 locationB.accept((newLocation, aqi))
             }
+        }
+    }
+    
+    private func changeLocation(locationA: Location, locationB: Location) {
+        Task {
+            let aqiA = await fetchAQI(latitude: locationA.latitude, longitude: locationA.longitude)
+            let aqiB = await fetchAQI(latitude: locationB.latitude, longitude: locationB.longitude)
+            self.locationA.accept((location: locationA, aqi: aqiA))
+            self.locationB.accept((location: locationB, aqi: aqiB))
         }
     }
 }

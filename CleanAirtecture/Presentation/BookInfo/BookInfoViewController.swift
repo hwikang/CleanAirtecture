@@ -10,6 +10,7 @@ import RxSwift
 
 final class BookInfoViewController: UIViewController {
     private let viewModel: BookInfoViewModelProtocol
+    private let coordinator: BookInfoCoordinatorProtocol
     private let disposeBag = DisposeBag()
     private let bookInfoViewA = BookInfoView(title: "A")
     private let bookInfoViewB = BookInfoView(title: "B")
@@ -26,12 +27,13 @@ final class BookInfoViewController: UIViewController {
         return button
     }()
     
-    public init(viewModel: BookInfoViewModelProtocol) {
+    public init(viewModel: BookInfoViewModelProtocol, coordinator: BookInfoCoordinatorProtocol) {
         self.viewModel = viewModel
+        self.coordinator = coordinator
         super.init(nibName: nil, bundle: nil)
-        
         setUI()
         bindViewModel()
+        bindView()
     }
     
     private func setUI() {
@@ -59,11 +61,16 @@ final class BookInfoViewController: UIViewController {
             .bookResultInfo
             .observe(on: MainScheduler.instance)
             .bind { [weak self] bookResultInfo in
-                print(bookResultInfo)
                 self?.bookInfoViewA.apply(info: bookResultInfo.a)
                 self?.bookInfoViewB.apply(info: bookResultInfo.b)
                 self?.priceLabel.text = "가격 - \(bookResultInfo.price.truncateValue())"
             }.disposed(by: disposeBag)
+    }
+    
+    private func bindView() {
+        bookButton.rx.tap.bind { [weak self] in
+            self?.coordinator.pushBookHistoryVC()
+        }.disposed(by: disposeBag)
     }
     
     private func setConstraints() {
