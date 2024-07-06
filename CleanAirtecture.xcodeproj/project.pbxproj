@@ -31,6 +31,9 @@
 		F8AB34A02C3427EA00BC16C9 /* LocationCoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8AB349F2C3427EA00BC16C9 /* LocationCoreData.swift */; };
 		F8F5241F2C38346E0006D460 /* BookInfoUsecase.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8F5241E2C38346E0006D460 /* BookInfoUsecase.swift */; };
 		F8F524212C383D930006D460 /* BookInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8F524202C383D930006D460 /* BookInfoViewController.swift */; };
+		F8F524242C38E2B10006D460 /* BookHistoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8F524232C38E2B10006D460 /* BookHistoryViewModel.swift */; };
+		F8F524262C38E2C40006D460 /* BookHistoryUsecase.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8F524252C38E2C40006D460 /* BookHistoryUsecase.swift */; };
+		F8F524282C38E3880006D460 /* BookInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8F524272C38E3880006D460 /* BookInfoView.swift */; };
 		F8F8D5B32C3588E100500EFE /* MapCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8F8D5B22C3588E100500EFE /* MapCoordinator.swift */; };
 		F8F8D5B62C3589CF00500EFE /* LocationDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8F8D5B52C3589CF00500EFE /* LocationDetailViewController.swift */; };
 		F8F8D5B82C358A1300500EFE /* LocationDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8F8D5B72C358A1300500EFE /* LocationDetailViewModel.swift */; };
@@ -73,6 +76,9 @@
 		F8AB349F2C3427EA00BC16C9 /* LocationCoreData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationCoreData.swift; sourceTree = "<group>"; };
 		F8F5241E2C38346E0006D460 /* BookInfoUsecase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookInfoUsecase.swift; sourceTree = "<group>"; };
 		F8F524202C383D930006D460 /* BookInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookInfoViewController.swift; sourceTree = "<group>"; };
+		F8F524232C38E2B10006D460 /* BookHistoryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookHistoryViewModel.swift; sourceTree = "<group>"; };
+		F8F524252C38E2C40006D460 /* BookHistoryUsecase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookHistoryUsecase.swift; sourceTree = "<group>"; };
+		F8F524272C38E3880006D460 /* BookInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookInfoView.swift; sourceTree = "<group>"; };
 		F8F8D5B22C3588E100500EFE /* MapCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapCoordinator.swift; sourceTree = "<group>"; };
 		F8F8D5B52C3589CF00500EFE /* LocationDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationDetailViewController.swift; sourceTree = "<group>"; };
 		F8F8D5B72C358A1300500EFE /* LocationDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationDetailViewModel.swift; sourceTree = "<group>"; };
@@ -179,6 +185,7 @@
 			children = (
 				F8AB33F42C3292BC00BC16C9 /* MapUsecase.swift */,
 				F8F8D5B92C358A4D00500EFE /* LocationDetailUsecase.swift */,
+				F8F524252C38E2C40006D460 /* BookHistoryUsecase.swift */,
 				F8F5241E2C38346E0006D460 /* BookInfoUsecase.swift */,
 			);
 			path = Usecase;
@@ -226,6 +233,7 @@
 		F8AB348A2C33EC3D00BC16C9 /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
+				F8F524222C38E2A60006D460 /* BookHistory */,
 				F8F8D77D2C36E4DD00500EFE /* BookInfo */,
 				F8F8D5B42C3589BE00500EFE /* LocationDetail */,
 				F8AB348B2C33EC4500BC16C9 /* Map */,
@@ -261,6 +269,14 @@
 			path = CoreData;
 			sourceTree = "<group>";
 		};
+		F8F524222C38E2A60006D460 /* BookHistory */ = {
+			isa = PBXGroup;
+			children = (
+				F8F524232C38E2B10006D460 /* BookHistoryViewModel.swift */,
+			);
+			path = BookHistory;
+			sourceTree = "<group>";
+		};
 		F8F8D5B42C3589BE00500EFE /* LocationDetail */ = {
 			isa = PBXGroup;
 			children = (
@@ -275,6 +291,7 @@
 			children = (
 				F8F8D77E2C36E4E700500EFE /* BookInfoViewModel.swift */,
 				F8F524202C383D930006D460 /* BookInfoViewController.swift */,
+				F8F524272C38E3880006D460 /* BookInfoView.swift */,
 			);
 			path = BookInfo;
 			sourceTree = "<group>";
@@ -420,15 +437,18 @@
 				F8AB349D2C34272800BC16C9 /* CleanAirtecture.xcdatamodeld in Sources */,
 				F8F8D7872C36E71700500EFE /* BookRepositoryProtocol.swift in Sources */,
 				F8F8D5BC2C358BF200500EFE /* CoreDataManager.swift in Sources */,
+				F8F524262C38E2C40006D460 /* BookHistoryUsecase.swift in Sources */,
 				F8AB34902C33F31D00BC16C9 /* Extension + Bundle.swift in Sources */,
 				F8AB33F92C32944C00BC16C9 /* NetworkError.swift in Sources */,
 				F8F8D7892C36E78100500EFE /* BookNetwork.swift in Sources */,
 				F8F8D5BA2C358A4D00500EFE /* LocationDetailUsecase.swift in Sources */,
 				F8F524212C383D930006D460 /* BookInfoViewController.swift in Sources */,
 				F8AB33F52C3292BC00BC16C9 /* MapUsecase.swift in Sources */,
+				F8F524242C38E2B10006D460 /* BookHistoryViewModel.swift in Sources */,
 				F8AB33FB2C32946D00BC16C9 /* CoreDataError.swift in Sources */,
 				F8F5241F2C38346E0006D460 /* BookInfoUsecase.swift in Sources */,
 				F8AB34072C329E9300BC16C9 /* AQIFetchResult.swift in Sources */,
+				F8F524282C38E3880006D460 /* BookInfoView.swift in Sources */,
 				F8F8D7812C36E51000500EFE /* BookInfo.swift in Sources */,
 				F8AB33DC2C328D2300BC16C9 /* AppDelegate.swift in Sources */,
 				F8AB33F12C328E5200BC16C9 /* LocationFetchResult.swift in Sources */,

@@ -18,6 +18,9 @@ public struct BookRepository: BookRepositoryProtocol {
         await bookNetwork.requestBook(a: a, b: b)
     }
     
+    public func fetchBookHistory(year: Int, month: Int) async -> Result<[BookResultInfo], NetworkError> {
+        await bookNetwork.fetchBookHistory(year: year, month: month)
+    }
     public func getLocationNickname(latitude: Double, longitude: Double) -> String? {
         let result = coreData.getLocation(latitude: latitude, longitude: longitude)
         switch result {
@@ -28,5 +31,6 @@ public struct BookRepository: BookRepositoryProtocol {
             return nil
         }
     }
+    
     
 }

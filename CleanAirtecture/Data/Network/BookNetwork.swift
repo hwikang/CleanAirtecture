@@ -18,8 +18,7 @@ public struct BookNetwork {
         guard let aJSONString = a.toJSONString(), let bJSONString = b.toJSONString() else { return .failure(.encodingError)}
         let parameters: Parameters = [
             "a": aJSONString,
-            "b": bJSONString,
-            "price": 123
+            "b": bJSONString
         ]
         
         print(parameters)
@@ -30,5 +29,14 @@ public struct BookNetwork {
 
         #endif
     }
+    
+    public func fetchBookHistory(year: Int, month: Int) async -> Result<[BookResultInfo], NetworkError> {
+        let url = "https://mvchain/books"
+        let parameters: Parameters = [
+            "year": year,
+            "month": month
+        ]
+        return await manager.fetchData(url: url, method: .get, parameters: parameters)
 
+    }
 }
