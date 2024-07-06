@@ -28,6 +28,7 @@ public struct MapViewModel: MapViewModelProtocol {
         let getLocation: Observable<Void>
         let refreshLocation: Observable<Void>
         let changeLocation: Observable<(locationA: Location, locationB: Location)>
+        let setLocation: Observable<Location>
     }
     public struct Output {
         let aqi: Observable<Int>
@@ -47,6 +48,9 @@ public struct MapViewModel: MapViewModelProtocol {
         }.disposed(by: disposeBag)
         input.changeLocation.bind { newLocations in
             changeLocation(locationA: newLocations.locationA, locationB: newLocations.locationB)
+        }.disposed(by: disposeBag)
+        input.setLocation.bind { location in
+            setLocationWithNewAQI(location: location)
         }.disposed(by: disposeBag)
         return Output(aqi: aqi.asObservable(), locationA: locationA.asObservable(),
                       locationB: locationB.asObservable(),

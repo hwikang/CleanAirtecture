@@ -22,6 +22,7 @@ class MapViewController: UIViewController, GMSMapViewDelegate {
     private let getLocation = PublishRelay<Void>()
     private let refreshCurrentLocation = PublishRelay<Void>()
     private let changeLocation = PublishRelay<(locationA: Location, locationB: Location)>()
+    private let setLocation = PublishRelay<Location>()
 
     private let markerImageView = UIImageView(image: UIImage(named: "custom_pin"))
     private let aqiLabel = {
@@ -94,7 +95,8 @@ class MapViewController: UIViewController, GMSMapViewDelegate {
         let output = viewModel.transform(input: MapViewModel.Input(mapPosition: moveMap.asObservable(), 
                                                                    getLocation: getLocation.asObservable(),
                                                                    refreshLocation: refreshCurrentLocation.asObservable(),
-                                                                   changeLocation: changeLocation.asObservable()))
+                                                                   changeLocation: changeLocation.asObservable(),
+                                                                   setLocation: setLocation.asObservable()))
         output.aqi.map { "AQI - \($0)" }
             .bind(to: aqiLabel.rx.text)
             .disposed(by: disposeBag)
@@ -135,7 +137,9 @@ class MapViewController: UIViewController, GMSMapViewDelegate {
                                                            aqi: locationA.aqi,
                                                            onChangeNickname: { self?.refreshCurrentLocation.accept(()) })
                 } else {
-                    //TODO: 다섯번째 페이지이동
+                    self?.coordinator.pushSavedLocationVC() { location in
+                        self?.setLocation.accept(location)
+                    }
                 }
             })
             .disposed(by: disposeBag)
@@ -148,7 +152,9 @@ class MapViewController: UIViewController, GMSMapViewDelegate {
                                                            onChangeNickname: { self?.refreshCurrentLocation.accept(()) })
 
                 } else {
-                    //TODO: 다섯번째 페이지이동
+                    self?.coordinator.pushSavedLocationVC() { location in
+                        self?.setLocation.accept(location)
+                    }
                 }
             })
             .disposed(by: disposeBag)

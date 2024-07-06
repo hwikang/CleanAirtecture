@@ -10,6 +10,7 @@ import UIKit
 protocol MapCoordinatorProtocol {
     func pushLocationDetailVC(location: Location, aqi: Int, onChangeNickname: @escaping ()-> Void)
     func pushBookInfoVC(locationA: Location, locationB: Location, aqiA: Int, aqiB: Int)
+    func pushSavedLocationVC(onSelectLocation: @escaping (Location)-> Void) 
 }
 public struct MapCoordinator: MapCoordinatorProtocol {
     private let nav: UINavigationController
@@ -34,6 +35,17 @@ public struct MapCoordinator: MapCoordinatorProtocol {
         let bookInfoCD = BookInfoCoordinator(nav: nav)
         let bookInfoVC = BookInfoViewController(viewModel: bookInfoVM, coordinator: bookInfoCD)
         nav.pushViewController(bookInfoVC, animated: true)
+
+    }
+    
+    public func pushSavedLocationVC(onSelectLocation: @escaping (Location)-> Void) {
+        let networkManager = NetworkManager()
+        let locationRP = LocationRepository(locationNetwok: LocationNetwork(manager: networkManager), aqiNetwork: AQINetwork(manager: networkManager), coreData: LocationCoreData())
+
+        let savedLocationUC = SavedLocationUsecase(repository: locationRP)
+        let savedLocationVM = SavedLocationViewModel(usecase: savedLocationUC)
+        let savedLocationVC = SavedLocationViewController(viewModel: savedLocationVM, onSelectLocation: onSelectLocation)
+        nav.pushViewController(savedLocationVC, animated: true)
 
     }
 }

@@ -7,7 +7,7 @@
 
 import Foundation
 
-protocol SavedLocationUsecaseProtocol {
+public protocol SavedLocationUsecaseProtocol {
     func getLocations() -> [Location]
 }
 public struct SavedLocationUsecase: SavedLocationUsecaseProtocol {

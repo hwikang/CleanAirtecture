@@ -40,6 +40,8 @@
 		F8F524562C38F6BC0006D460 /* BookHistoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8F524552C38F6BC0006D460 /* BookHistoryTableViewCell.swift */; };
 		F8F524592C3910B70006D460 /* SavedLocationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8F524582C3910B70006D460 /* SavedLocationViewModel.swift */; };
 		F8F5245B2C3910D80006D460 /* SavedLocationUsecase.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8F5245A2C3910D80006D460 /* SavedLocationUsecase.swift */; };
+		F8F5245D2C391A810006D460 /* SavedLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8F5245C2C391A810006D460 /* SavedLocationViewController.swift */; };
+		F8F5245F2C391DE60006D460 /* SavedLocationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8F5245E2C391DE60006D460 /* SavedLocationTableViewCell.swift */; };
 		F8F8D5B32C3588E100500EFE /* MapCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8F8D5B22C3588E100500EFE /* MapCoordinator.swift */; };
 		F8F8D5B62C3589CF00500EFE /* LocationDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8F8D5B52C3589CF00500EFE /* LocationDetailViewController.swift */; };
 		F8F8D5B82C358A1300500EFE /* LocationDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8F8D5B72C358A1300500EFE /* LocationDetailViewModel.swift */; };
@@ -91,6 +93,8 @@
 		F8F524552C38F6BC0006D460 /* BookHistoryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookHistoryTableViewCell.swift; sourceTree = "<group>"; };
 		F8F524582C3910B70006D460 /* SavedLocationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedLocationViewModel.swift; sourceTree = "<group>"; };
 		F8F5245A2C3910D80006D460 /* SavedLocationUsecase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedLocationUsecase.swift; sourceTree = "<group>"; };
+		F8F5245C2C391A810006D460 /* SavedLocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedLocationViewController.swift; sourceTree = "<group>"; };
+		F8F5245E2C391DE60006D460 /* SavedLocationTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedLocationTableViewCell.swift; sourceTree = "<group>"; };
 		F8F8D5B22C3588E100500EFE /* MapCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapCoordinator.swift; sourceTree = "<group>"; };
 		F8F8D5B52C3589CF00500EFE /* LocationDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationDetailViewController.swift; sourceTree = "<group>"; };
 		F8F8D5B72C358A1300500EFE /* LocationDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationDetailViewModel.swift; sourceTree = "<group>"; };
@@ -298,6 +302,8 @@
 			isa = PBXGroup;
 			children = (
 				F8F524582C3910B70006D460 /* SavedLocationViewModel.swift */,
+				F8F5245C2C391A810006D460 /* SavedLocationViewController.swift */,
+				F8F5245E2C391DE60006D460 /* SavedLocationTableViewCell.swift */,
 			);
 			path = SavedLocation;
 			sourceTree = "<group>";
@@ -469,12 +475,14 @@
 				F8F524502C38EDD30006D460 /* BookHistoryViewController.swift in Sources */,
 				F8AB34902C33F31D00BC16C9 /* Extension + Bundle.swift in Sources */,
 				F8AB33F92C32944C00BC16C9 /* NetworkError.swift in Sources */,
+				F8F5245F2C391DE60006D460 /* SavedLocationTableViewCell.swift in Sources */,
 				F8F8D7892C36E78100500EFE /* BookNetwork.swift in Sources */,
 				F8F8D5BA2C358A4D00500EFE /* LocationDetailUsecase.swift in Sources */,
 				F8F524212C383D930006D460 /* BookInfoViewController.swift in Sources */,
 				F8AB33F52C3292BC00BC16C9 /* MapUsecase.swift in Sources */,
 				F8F524242C38E2B10006D460 /* BookHistoryViewModel.swift in Sources */,
 				F8AB33FB2C32946D00BC16C9 /* CoreDataError.swift in Sources */,
+				F8F5245D2C391A810006D460 /* SavedLocationViewController.swift in Sources */,
 				F8F5241F2C38346E0006D460 /* BookInfoUsecase.swift in Sources */,
 				F8F5245B2C3910D80006D460 /* SavedLocationUsecase.swift in Sources */,
 				F8AB34072C329E9300BC16C9 /* AQIFetchResult.swift in Sources */,
