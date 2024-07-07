@@ -16,11 +16,11 @@ public enum CoreDataError: Error {
 
     public var description: String {
         switch self {
-        case .entityNotFound(let object): return "즐겨찾기 데이터 \(object) Not found"
-        case .saveError(let message): return "즐겨찾기 저장 에러 \(message)"
-        case .readError(let message): return "즐겨찾기 불러오기 에러 \(message)"
-        case .deleteError(let message): return "즐겨찾기 삭제 에러 \(message)"
-        case .updateError(let message): return "즐겨찾기 수정 에러 \(message)"
+        case .entityNotFound(let object): return "CoreData 데이터 \(object) Not found"
+        case .saveError(let message): return "CoreData 저장 에러 \(message)"
+        case .readError(let message): return "CoreData 불러오기 에러 \(message)"
+        case .deleteError(let message): return "CoreData 삭제 에러 \(message)"
+        case .updateError(let message): return "CoreData 수정 에러 \(message)"
         }
     }
 }

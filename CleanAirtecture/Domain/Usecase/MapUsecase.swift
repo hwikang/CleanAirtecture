@@ -10,6 +10,7 @@ import Foundation
 protocol MapUsecaseProtocol {
     func getLocationInfo(latitude: Double, longitude: Double) async -> Result<Location, NetworkError>
     func fetchAQI(latitude: Double, longitude: Double) async -> Result<Int, NetworkError>
+    func saveLocation(location: Location)
 }
 
 public struct MapUsecase: MapUsecaseProtocol {
@@ -43,8 +44,12 @@ public struct MapUsecase: MapUsecaseProtocol {
         }
     }
     
+    public func saveLocation(location: Location) {
+        repository.saveLocation(location: location)
+    }
+    
     private func fetchLocationInfo(latitude: Double, longitude: Double) async -> Result<Location, NetworkError> {
-       
+        
         let result = await repository.fetchLocation(latitude: latitude, longitude: longitude)
         switch result {
         case .success(let locationResult):
@@ -55,7 +60,5 @@ public struct MapUsecase: MapUsecaseProtocol {
             return .failure(error)
         }
     }
-    
-    
     
 }

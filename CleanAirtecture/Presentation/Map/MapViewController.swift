@@ -18,6 +18,7 @@ class MapViewController: UIViewController, GMSMapViewDelegate {
     private let locationManager = CLLocationManager()
     private var mapView: GMSMapView?
     private let disposeBag = DisposeBag()
+    private let initMap = PublishRelay<(latitude: Double, longitude: Double)>()
     private let moveMap = PublishRelay<(latitude: Double, longitude: Double)>()
     private let getLocation = PublishRelay<Void>()
     private let refreshCurrentLocation = PublishRelay<Void>()
@@ -86,7 +87,6 @@ class MapViewController: UIViewController, GMSMapViewDelegate {
         containerView.addSubview(locationB)
         containerView.addSubview(setLocationButton)
         setConstraints()
-
        
     }
     
@@ -102,7 +102,6 @@ class MapViewController: UIViewController, GMSMapViewDelegate {
             .disposed(by: disposeBag)
         
         let locations = Observable.combineLatest(output.locationA, output.locationB)
-        
         locations
             .observe(on: MainScheduler.instance)
             .bind { [weak self] (locationA, locationB) in
@@ -116,6 +115,17 @@ class MapViewController: UIViewController, GMSMapViewDelegate {
                 self?.setLocationButton.setTitle("Book", for: .normal)
             }
         }.disposed(by: disposeBag)
+        
+        bindView(output: output)
+
+    }
+    
+    private func bindView(output: MapViewModel.Output) {
+        let locations = Observable.combineLatest(output.locationA, output.locationB)
+        initMap.debounce(.milliseconds(200), scheduler: MainScheduler.instance)
+            .bind { [weak self] latitude, longitude in
+                self?.setUI(latitude: latitude, longitude: longitude)
+            }.disposed(by: disposeBag)
         
         setLocationButton.rx.tap.withLatestFrom(locations)
             .bind { [weak self] (locationA, locationB) in
@@ -163,7 +173,6 @@ class MapViewController: UIViewController, GMSMapViewDelegate {
     func mapView(_ mapView: GMSMapView, idleAt position: GMSCameraPosition) {
         let latitude = position.target.latitude
         let longitude = position.target.longitude
-        print("지도 움직임 중: 위도 = \(latitude.truncateValue()), 경도 = \(longitude.truncateValue())")
         moveMap.accept((latitude: latitude.truncateValue(), longitude: longitude.truncateValue()))
         
     }
@@ -221,7 +230,7 @@ extension MapViewController: CLLocationManagerDelegate {
         print("현재 위치: \(location.coordinate.latitude), \(location.coordinate.longitude)")
         let latitude: Double = Double(location.coordinate.latitude)
         let longitude: Double = Double(location.coordinate.longitude)
-        setUI(latitude: latitude, longitude: longitude)
+        initMap.accept((latitude: latitude, longitude: longitude))
         
     }
 }

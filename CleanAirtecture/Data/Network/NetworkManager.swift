@@ -36,7 +36,6 @@ final public class NetworkManager {
                 return .failure(NetworkError.failToDecode(error.localizedDescription))
             }
         } else {
-            debugPrint(result.error?.localizedDescription)
             return .failure(NetworkError.serverError(response.statusCode))
         }
     }

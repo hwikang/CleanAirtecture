@@ -47,7 +47,7 @@ public struct MapViewModel: MapViewModelProtocol {
             refreshCurrentLocation()
         }.disposed(by: disposeBag)
         input.changeLocation.bind { newLocations in
-            changeLocation(locationA: newLocations.locationA, locationB: newLocations.locationB)
+            changeCurrentLocation(locationA: newLocations.locationA, locationB: newLocations.locationB)
         }.disposed(by: disposeBag)
         input.setLocation.bind { location in
             setLocationWithNewAQI(location: location)
@@ -116,8 +116,10 @@ public struct MapViewModel: MapViewModelProtocol {
         }
     }
     
-    private func changeLocation(locationA: Location, locationB: Location) {
+    private func changeCurrentLocation(locationA: Location, locationB: Location) {
         Task {
+            usecase.saveLocation(location: locationA)
+            usecase.saveLocation(location: locationB)
             let aqiA = await fetchAQI(latitude: locationA.latitude, longitude: locationA.longitude)
             let aqiB = await fetchAQI(latitude: locationB.latitude, longitude: locationB.longitude)
             self.locationA.accept((location: locationA, aqi: aqiA))

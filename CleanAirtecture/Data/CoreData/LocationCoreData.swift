@@ -20,13 +20,14 @@ final public class LocationCoreData {
         guard let entity = NSEntityDescription.entity(forEntityName: "SavedLocation", in: viewContext) else {
             return .failure(CoreDataError.entityNotFound("SavedLocation"))}
         
-        let userObject = NSManagedObject(entity: entity, insertInto: viewContext)
-        userObject.setValue(location.latitude, forKey: "latitude")
-        userObject.setValue(location.longitude, forKey: "longitude")
-        userObject.setValue(location.name, forKey: "name")
-        userObject.setValue(location.nickname, forKey: "nickname")
-        
         do {
+            let duplicatedLocation = try getSavedLocation(latitude: location.latitude, longitude: location.longitude)
+            if duplicatedLocation != nil { return .failure(.saveError("Duplicated Location Info"))}
+            let userObject = NSManagedObject(entity: entity, insertInto: viewContext)
+            userObject.setValue(location.latitude, forKey: "latitude")
+            userObject.setValue(location.longitude, forKey: "longitude")
+            userObject.setValue(location.name, forKey: "name")
+            userObject.setValue(location.nickname, forKey: "nickname")
             try viewContext.save()
         } catch let error {
             return .failure(CoreDataError.saveError(error.localizedDescription))
@@ -67,7 +68,7 @@ final public class LocationCoreData {
         
         do {
             let location = try getSavedLocation(latitude: latitude, longitude: longitude)
-            guard let location = location else { return .failure(.entityNotFound("Location")) }
+            guard let location = location else { return .failure(.entityNotFound("SavedLocation")) }
             location.nickname = nickname
             try viewContext.save()
             return .success(true)
@@ -99,5 +100,6 @@ final public class LocationCoreData {
         let results = try viewContext.fetch(fetchRequest)
         return results.first
     }
+    
 }
     

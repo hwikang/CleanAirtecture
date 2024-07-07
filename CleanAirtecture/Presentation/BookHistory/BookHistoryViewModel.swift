@@ -50,7 +50,6 @@ public struct BookHistoryViewModel: BookHistoryViewModelProtocol {
             let result = await usecase.fetchBookHistory()
             switch result {
             case .success(let history):
-                print(history)
                 let nameChangedHistory = history.map { info in
                     return BookResultInfo(a: changeNameToNickname(bookInfo: info.a),
                                           b: changeNameToNickname(bookInfo: info.b),

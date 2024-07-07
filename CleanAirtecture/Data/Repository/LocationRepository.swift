@@ -49,8 +49,8 @@ public struct LocationRepository: LocationRepositoryProtocol {
     public func updateLocation(latitude: Double, longitude: Double, nickname: String) -> Bool {
         let result = coreData.updateLocation(latitude: latitude, longitude: longitude, nickname: nickname)
         switch result {
-        case .success(let result):
-            return result
+        case .success:
+            return true
         case .failure(let error):
             print(error.description)
             return false
