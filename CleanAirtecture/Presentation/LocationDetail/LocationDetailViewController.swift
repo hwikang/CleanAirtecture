@@ -71,8 +71,9 @@ final class LocationDetailViewController: UIViewController {
             self?.nameLabel.text = "지역명 - " + location.name
             self?.aqiLabel.text = "AQI - " + aqi.description
             self?.locationLabel.text = "위도 - \(location.latitude) 경도 - \(location.longitude)"
+            self?.textField.becomeFirstResponder()
             self?.textField.text = location.nickname
-            
+
         }.disposed(by: disposeBag)
         output.errorMessage.bind { [weak self] errorMessage in
             self?.presentError(errorMessage: errorMessage)
