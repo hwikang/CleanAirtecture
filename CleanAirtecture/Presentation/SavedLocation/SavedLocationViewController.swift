@@ -13,6 +13,7 @@ final class SavedLocationViewController: UIViewController {
     private let viewModel: SavedLocationViewModelProtocol
     private let onSelectLocation: (Location)-> Void
     private let disposeBag = DisposeBag()
+   
     private let locationsTableView = {
         let tableView = UITableView()
         tableView.register(SavedLocationTableViewCell.self, forCellReuseIdentifier: SavedLocationTableViewCell.id)
@@ -66,6 +67,7 @@ final class SavedLocationViewController: UIViewController {
     }
     
     private func setConstraints() {
+       
         locationsTableView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
         }
