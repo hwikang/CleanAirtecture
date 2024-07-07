@@ -63,7 +63,7 @@ final class BookInfoViewController: UIViewController {
             .bind { [weak self] bookResultInfo in
                 self?.bookInfoViewA.apply(info: bookResultInfo.a)
                 self?.bookInfoViewB.apply(info: bookResultInfo.b)
-                self?.priceLabel.text = "가격 - \(bookResultInfo.price.truncateValue())"
+                self?.priceLabel.text = "가격 - \(bookResultInfo.price)"
             }.disposed(by: disposeBag)
     }
     

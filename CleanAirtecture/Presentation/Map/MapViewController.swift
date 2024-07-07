@@ -173,7 +173,7 @@ class MapViewController: UIViewController, GMSMapViewDelegate {
     func mapView(_ mapView: GMSMapView, idleAt position: GMSCameraPosition) {
         let latitude = position.target.latitude
         let longitude = position.target.longitude
-        moveMap.accept((latitude: latitude.truncateValue(), longitude: longitude.truncateValue()))
+        moveMap.accept((latitude: latitude.truncateValue(point: 3), longitude: longitude.truncateValue(point: 3)))
         
     }
     

@@ -8,8 +8,8 @@
 import Foundation
 extension Double {
 
-    func truncateValue() -> Double {
-        let multiplier = pow(10.0, Double(3))
+    func truncateValue(point: Int) -> Double {
+        let multiplier = pow(10.0, Double(point))
         return (self * multiplier).rounded(.down) / multiplier
     }
 }

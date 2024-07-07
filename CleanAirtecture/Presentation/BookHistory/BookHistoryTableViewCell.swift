@@ -28,7 +28,7 @@ final class BookHistoryTableViewCell: UITableViewCell {
     public func apply(info: BookResultInfo) {
         bookInfoViewA.apply(info: info.a)
         bookInfoViewB.apply(info: info.b)
-        priceLabel.text = "가격 - \(info.price.truncateValue())"
+        priceLabel.text = "가격 - \(info.price)"
     }
     
     private func setConstraints() {

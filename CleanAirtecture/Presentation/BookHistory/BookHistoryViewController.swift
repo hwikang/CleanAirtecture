@@ -77,7 +77,7 @@ final class BookHistoryViewController: UIViewController {
             .bind { [weak self] history in
                 self?.totalCountLabel.text = "Total Count : \(history.count)"
                 let totalPrice = history.reduce(0, { $0 + $1.price })
-                self?.totalPriceLabel.text = "Total Price : \(totalPrice.truncateValue())"
+                self?.totalPriceLabel.text = "Total Price : \(totalPrice)"
             }.disposed(by: disposeBag)
         
     }
